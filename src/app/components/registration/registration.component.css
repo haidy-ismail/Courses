@@ -11,12 +11,12 @@
   justify-content: center;
   align-items: center;
   padding: 10px;
-  background: linear-gradient(135deg, #71b7e6, #9b59b6);
+  background: linear-gradient(90deg, rgba(7,36,0,1) 0%, rgba(13,121,20,1) 33%, rgba(20,85,98,1) 100%);
 }
 .container{
 
   max-width: 700px;
-  margin: 150px 500px 200px  ;
+  margin: 100px 500px 0px ;
   width: 100%;
   background-color: #fff;
   padding: 25px 30px;
@@ -67,7 +67,7 @@ form .input-box span.details{
 }
 .user-details .input-box input:focus,
 .user-details .input-box input:valid{
-  border-color: #9b59b6;
+  border-color: #34c34c;
 }
  form .gender-details .gender-title{
   font-size: 20px;
@@ -96,7 +96,7 @@ form .input-box span.details{
  #dot-1:checked ~ .category label .one,
  #dot-2:checked ~ .category label .two,
  #dot-3:checked ~ .category label .three{
-   background: #9b59b6;
+   background: #34c34c;
    border-color: #d9d9d9;
  }
  form input[type="radio"]{
@@ -117,11 +117,11 @@ form .input-box span.details{
    letter-spacing: 1px;
    cursor: pointer;
    transition: all 0.3s ease;
-   background: linear-gradient(135deg, #71b7e6, #9b59b6);
+   background: linear-gradient(90deg, rgba(7,36,0,1) 0%, rgba(13,121,20,1) 33%, rgba(20,85,98,1) 100%);
  }
  form .button input:hover{
   /* transform: scale(0.99); */
-  background: linear-gradient(-135deg, #71b7e6, #9b59b6);
+  background: linear-gradient(-90deg, rgba(7,36,0,1) 0%, rgba(13,121,20,1) 33%, rgba(20,85,98,1) 100%);
   }
  @media(max-width: 584px){
  .container{
