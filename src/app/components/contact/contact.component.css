@@ -30,3 +30,13 @@
     text-transform: uppercase;
     color: #999;
   }
+
+  .inside-box{
+    background-color: white;
+    height: 200px;
+  }
+
+  .address{
+    padding-right: 30px;
+  }
+  
