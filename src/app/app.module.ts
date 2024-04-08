@@ -8,6 +8,8 @@ import { FooterComponent } from './shared/footer/footer.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { JobsComponent } from './components/jobs/jobs.component';
 import { RegistrationComponent } from './components/registration/registration.component';
+import { ConstructionFoundComponent } from './components/construction-found/construction-found.component';
+import { EnrollmentComponent } from './components/construction-found/enrollment/enrollment.component';
 
 
 @NgModule({
@@ -17,7 +19,10 @@ import { RegistrationComponent } from './components/registration/registration.co
     FooterComponent,
     ContactComponent,
     JobsComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    ConstructionFoundComponent,
+    EnrollmentComponent,
+    
   ],
   imports: [
     BrowserModule,
