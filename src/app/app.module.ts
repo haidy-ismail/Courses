@@ -6,11 +6,11 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { ContactComponent } from './components/contact/contact.component';
-
 import { JobsComponent } from './components/jobs/jobs.component';
-
 import { RegistrationComponent } from './components/registration/registration.component';
 import { LogInComponent } from './components/log-in/log-in.component';
+import { ConstructionFoundComponent } from './components/construction-found/construction-found.component';
+import { EnrollmentComponent } from './components/construction-found/enrollment/enrollment.component';
 
 
 @NgModule({
@@ -20,6 +20,10 @@ import { LogInComponent } from './components/log-in/log-in.component';
     FooterComponent,
     ContactComponent,
     JobsComponent,
+    RegistrationComponent,
+    ConstructionFoundComponent,
+    EnrollmentComponent,
+    
     RegistrationComponent,
     LogInComponent
   ],
