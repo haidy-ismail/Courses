@@ -37,7 +37,7 @@
   height: 3px;
   width: 30px;
   border-radius: 5px;
-  background: linear-gradient(135deg, #71b7e6, #9b59b6);
+  background: linear-gradient(90deg, rgba(7,36,0,1) 0%, rgba(13,121,20,1) 33%, rgba(20,85,98,1) 100%);
 }
 .content form .user-details{
   display: flex;

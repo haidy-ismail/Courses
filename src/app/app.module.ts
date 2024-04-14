@@ -10,6 +10,7 @@ import { ContactComponent } from './components/contact/contact.component';
 import { JobsComponent } from './components/jobs/jobs.component';
 
 import { RegistrationComponent } from './components/registration/registration.component';
+import { LogInComponent } from './components/log-in/log-in.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { RegistrationComponent } from './components/registration/registration.co
     FooterComponent,
     ContactComponent,
     JobsComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    LogInComponent
   ],
   imports: [
     BrowserModule,
