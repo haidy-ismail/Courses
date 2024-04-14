@@ -6,11 +6,13 @@ import { RegistrationComponent } from './components/registration/registration.co
 import { ConstructionFoundComponent } from './components/construction-found/construction-found.component';
 import { EnrollmentComponent } from './components/construction-found/enrollment/enrollment.component';
 import { HeaderComponent } from './shared/header/header.component';
+import { LogInComponent } from './components/log-in/log-in.component';
 
 const routes: Routes = [
   {path:'contact',component:ContactComponent},
   {path:'jobs',component:JobsComponent},
   {path:'registration',component:RegistrationComponent},
+  {path: 'logIn' , component: LogInComponent},
   {path:'ConstFoundation',component:ConstructionFoundComponent},
   {path:'enroll',component:EnrollmentComponent},
   {path:'header',component:HeaderComponent}
