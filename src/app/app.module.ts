@@ -8,6 +8,7 @@ import { FooterComponent } from './shared/footer/footer.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { JobsComponent } from './components/jobs/jobs.component';
 import { RegistrationComponent } from './components/registration/registration.component';
+import { LogInComponent } from './components/log-in/log-in.component';
 import { ConstructionFoundComponent } from './components/construction-found/construction-found.component';
 import { EnrollmentComponent } from './components/construction-found/enrollment/enrollment.component';
 import { NewsComponent } from './components/news/news.component';
@@ -47,6 +48,8 @@ import { NursingComponent } from './components/InterConstructionCentre/internPro
     MangmentComponent,
     NursingComponent,
     
+    RegistrationComponent,
+    LogInComponent
   ],
   imports: [
     BrowserModule,

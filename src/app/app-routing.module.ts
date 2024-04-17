@@ -17,12 +17,14 @@ import { ComputersComponent } from './components/InterConstructionCentre/internP
 import { LanguagesComponent } from './components/InterConstructionCentre/internProgram/long-term/languages/languages.component';
 import { MangmentComponent } from './components/InterConstructionCentre/internProgram/long-term/mangment/mangment.component';
 import { NursingComponent } from './components/InterConstructionCentre/internProgram/long-term/nursing/nursing.component';
+import { LogInComponent } from './components/log-in/log-in.component';
 
 const routes: Routes = [
   {path:'home',component:MainComponent},
   {path:'contact',component:ContactComponent},
   {path:'jobs',component:JobsComponent},
   {path:'registration',component:RegistrationComponent},
+  {path: 'logIn' , component: LogInComponent},
   {path:'ConstFoundation',component:ConstructionFoundComponent},
   {path:'enroll',component:EnrollmentComponent},
   {path:'header',component:HeaderComponent},
