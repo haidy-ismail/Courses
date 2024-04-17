@@ -10,6 +10,18 @@ import { JobsComponent } from './components/jobs/jobs.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { ConstructionFoundComponent } from './components/construction-found/construction-found.component';
 import { EnrollmentComponent } from './components/construction-found/enrollment/enrollment.component';
+import { NewsComponent } from './components/news/news.component';
+import { MagazineComponent } from './components/magazine/magazine.component';
+import { MainComponent } from './components/main/main.component';
+import { ResultComponent } from './components/InterConstructionCentre/internProgram/result/result.component';
+import { LongTermComponent } from './components/InterConstructionCentre/internProgram/long-term/long-term.component';
+import { JournalistComponent } from './components/InterConstructionCentre/internProgram/long-term/journalist/journalist.component';
+import { TourismComponent } from './components/InterConstructionCentre/internProgram/long-term/tourism/tourism.component';
+import { MapsComponent } from './components/InterConstructionCentre/internProgram/long-term/maps/maps.component';
+import { ComputersComponent } from './components/InterConstructionCentre/internProgram/long-term/computers/computers.component';
+import { LanguagesComponent } from './components/InterConstructionCentre/internProgram/long-term/languages/languages.component';
+import { MangmentComponent } from './components/InterConstructionCentre/internProgram/long-term/mangment/mangment.component';
+import { NursingComponent } from './components/InterConstructionCentre/internProgram/long-term/nursing/nursing.component';
 
 
 @NgModule({
@@ -22,6 +34,18 @@ import { EnrollmentComponent } from './components/construction-found/enrollment/
     RegistrationComponent,
     ConstructionFoundComponent,
     EnrollmentComponent,
+    NewsComponent,
+    MagazineComponent,
+    MainComponent,
+    ResultComponent,
+    LongTermComponent,
+    JournalistComponent,
+    TourismComponent,
+    MapsComponent,
+    ComputersComponent,
+    LanguagesComponent,
+    MangmentComponent,
+    NursingComponent,
     
   ],
   imports: [

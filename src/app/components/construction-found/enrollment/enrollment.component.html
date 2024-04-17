@@ -5,10 +5,10 @@
         <form
           action="forms/quote.php"
           method="post"
-          class="php-email-form scrolled_form"
+          class="php-email-form"
+          id="scrolled_form"
         >
           <h3>تقديم طلب</h3>
-          <!-- <p>Vel nobis odio laboriosam et hic voluptatem. Inventore vitae totam. Rerum repellendus enim linead sero park flows.</p> -->
           <div class="row gy-3">
             <div class="col-md-12">
               <input
@@ -89,88 +89,123 @@
                 required
               />
             </div>
-<!-- 
-            <p>عمل طوعي معين يثير اهتمامك؟</p>
 
-            <div class="form-check">
-              <label class="form-check-label" for="flexCheckDefault">
-                هل هناك افضلية لعمل معين
-              </label>
-              <input
-                class="form-check-input"
-                type="checkbox"
-                value=""
-                id="flexCheckDefault"
-              />
+            <div class="col-md-12">
+              <select class="form-select" aria-label="Default select example">
+                <option selected disabled>عمل طوعي معين يثير اهتمامك؟</option>
+                <option value="1">هل هناك افضلية لعمل معين</option>
+                <option value="2">العمل مع منتفع واحد</option>
+                <option value="3">لا توجد افضلية</option>
+                <option value="4">تقديم الخدمةالي عدة منتفعين</option>
+                <option value="5">العمل مباشرة مع احد الموظفين كمساعد</option>
+                <option value="6">التخاطب الجماهيري</option>
+                <option value="7">المساعدات في الواجبات الادارية العامة</option>
+                <option value="8">تحرير صحيفة او نشرة</option>
+                <option value="9">غيرها</option>
+              </select>
             </div>
 
-            <div class="form-check">
-              <label class="form-check-label" for="flexCheckChecked">
-                العمل مع منتفع واحد
-              </label>
-              <input
-                class="form-check-input"
-                type="checkbox"
-                value=""
-                id="flexCheckChecked"
-                checked
-              />
+            <div class="col-md-12">
+              <select class="form-select" aria-label="Default select example">
+                <option selected disabled>
+                  هل هناك مستفيد (زبون) او مجموعة مستفيدين تفضل العمل معها ؟
+                </option>
+                <option value="1">البالغين</option>
+                <option value="2">كبار السن</option>
+                <option value="3">اليافعين</option>
+                <option value="4">الاطفال</option>
+                <option value="5">المعوقين</option>
+                <option value="6">الذكور</option>
+                <option value="7">الاناث</option>
+                <option value="8">لا مفاضلة</option>
+                <option value="9">غيرهم</option>
+                <option value="10">لا ارغب في العمل مع المنتفعين</option>
+              </select>
             </div>
 
-            <div class="form-check">
-              <label class="form-check-label" for="flexCheckChecked">
-                لا توجد افضلية
-              </label>
-              <input
-                class="form-check-input boxes"
-                type="checkbox"
-                value=""
-                id="flexCheckChecked"
-                checked
-              />
+            <div class="col-md-12">
+              <select class="form-select" aria-label="Default select example">
+                <option selected disabled>
+                  هل هناك مجموعة لا تشعر بالميل للعمل معها ؟
+                </option>
+                <option value="1">لا</option>
+                <option value="2">نعم</option>
+              </select>
             </div>
 
-            <div class="slds-form-element">
-              <div class="slds-form-element__control">
-                <div class="slds-checkbox">
-                  <input
-                    type="checkbox"
-                    name="options"
-                    id="checkbox-unique-id-82"
-                    value="checkbox-unique-id-82"
-                    checked=""
-                  />
-                  <label
-                    class="slds-checkbox__label"
-                    for="checkbox-unique-id-82"
-                  >
-                    <span class="slds-checkbox_faux"></span>
-                    <span class="slds-form-element__label">Checkbox Label</span>
-                  </label>
-                </div>
+            <div class="col-md-12">
+              <select class="form-select" aria-label="Default select example">
+                <option selected disabled>
+                  ما هي الاوقات التي تفضل العمل التطوعي فيها ؟
+                </option>
+                <option value="1">مرن</option>
+                <option value="2">افضل ايام الاسبوع</option>
+                <option value="3">افضل العطل الاسبوعية</option>
+                <option value="4">افضل العمل النهاري</option>
+                <option value="5">افضل العمل المسائي</option>
+                <option value="6">غيرها</option>
+                <option value="7">
+                  هناك اوقات لا استطيع العمل بها خلال الاسبوع
+                </option>
+              </select>
+            </div>
+
+            <div class="col-md-12">
+              <select class="form-select" aria-label="Default select example">
+                <option selected disabled>
+                  هل عندك افضلية جغرافية في العمل التطوعي ؟
+                </option>
+                <option value="1">لا</option>
+                <option value="2">نعم</option>
+                <option value="3">احيانا</option>
+              </select>
+            </div>
+
+            <div class="col-md-12">
+              <select class="form-select" aria-label="Default select example">
+                <option selected disabled>
+                  هل لديك سيارة بامكانك استخدامها في العمل التطوعي ؟
+                </option>
+                <option value="1">لا</option>
+                <option value="2">نعم</option>
+                <option value="3">احيانا</option>
+              </select>
+            </div>
+
+            <div class="col-md-12">
+              <select class="form-select" aria-label="Default select example">
+                <option selected disabled>
+                  مصادر معرفتك بنا , كيف سمعت عنا ؟
+                </option>
+                <option value="1">توصية صديق</option>
+                <option value="2">مكتوب تطوعي</option>
+                <option value="3">احد المتطوعين</option>
+                <option value="4">اعلانات</option>
+                <option value="5">احد المستفيدين من الجمعية</option>
+                <option value="6">غيرها</option>
+              </select>
+            </div>
+
+            <h3>اسم وهاتف اثنين ممكن يعرفونك</h3>
+
+           
+              <div class="col-md-6">
+                <input type="text" name="name" class="form-control" placeholder="الاسم" required />
               </div>
-            </div> -->
 
-            <div class="dropdown">
-              <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                عمل طوعي معين يثير اهتمامك؟
-              </button>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">هل هناك افضلية لعمل معين</a></li>
-                <li><a class="dropdown-item" href="#">العمل مع منتفع واحد </a></li>
-                <li><a class="dropdown-item" href="#">لا توجد افضلية</a></li>
-              </ul>
-            </div>
+              <div class="col-md-6">
+                <input type="text" name="name" class="form-control" placeholder="الهاتف" required />
+              </div>
+          
 
-            <div style="display: inline-block;">
-            <label for="language" style="margin-left: 5px;">عمل طوعي معين يثير اهتمامك؟:</label>
-<select name="language" id="language"  style="width: 415px;">
-  <option value="javascript">JavaScript</option>
-  <option value="python">Python</option>
-  <option value="c++" disabled>C++</option>
-  <option value="java" selected>Java</option>
-</select>
-</div>
+          
+              <div class="col-md-6">
+                <input type="text" name="name" class="form-control" placeholder="الاسم" required />
+              </div>
+
+              <div class="col-md-6">
+                <input type="text" name="name" class="form-control" placeholder="الهاتف" required />
+              </div>
 
             <div class="col-md-12 text-center">
               <div class="loading">Loading</div>
@@ -179,13 +214,8 @@
                 Your quote request has been sent successfully. Thank you!
               </div>
 
-              
-
               <button type="submit">تقديم</button>
             </div>
-
-            
-
           </div>
         </form>
       </div>

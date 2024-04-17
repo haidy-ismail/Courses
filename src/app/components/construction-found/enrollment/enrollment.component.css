@@ -2,10 +2,10 @@
     margin-top: 80px;
 }
 
-/* .scrolled_form{
-  height:400px;
-  overflow-y:auto
-} */
+#scrolled_form{
+  height:500px;
+  overflow-y:auto;
+}
 
 
 
