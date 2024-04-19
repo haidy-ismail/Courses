@@ -11,6 +11,9 @@ import { RegistrationComponent } from './components/registration/registration.co
 import { LogInComponent } from './components/log-in/log-in.component';
 import { ConstructionFoundComponent } from './components/construction-found/construction-found.component';
 import { EnrollmentComponent } from './components/construction-found/enrollment/enrollment.component';
+import { BuildingInstituteComponent } from './components/building-institute/building-institute.component';
+import { VisionComponent } from './components/building-institute/vision/vision.component';
+import { AdditionsComponent } from './components/building-institute/additions/additions.component';
 
 
 @NgModule({
@@ -25,7 +28,10 @@ import { EnrollmentComponent } from './components/construction-found/enrollment/
     EnrollmentComponent,
     
     RegistrationComponent,
-    LogInComponent
+    LogInComponent,
+    BuildingInstituteComponent,
+    VisionComponent,
+    AdditionsComponent
   ],
   imports: [
     BrowserModule,
