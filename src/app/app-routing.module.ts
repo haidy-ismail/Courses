@@ -24,7 +24,7 @@ const routes: Routes = [
   {path:'contact',component:ContactComponent},
   {path:'jobs',component:JobsComponent},
   {path:'registration',component:RegistrationComponent},
-  {path: 'logIn' , component: LogInComponent},
+  {path: 'log' , component:LogInComponent},
   {path:'ConstFoundation',component:ConstructionFoundComponent},
   {path:'enroll',component:EnrollmentComponent},
   {path:'header',component:HeaderComponent},
