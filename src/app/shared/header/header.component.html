@@ -4,7 +4,7 @@
   
       <h1 class="logo"><a href="index.html">البناء الدولية</a></h1>
   
-      <nav id="navbar" class="navbar" >
+      <nav id="navbar" class="navbar" [ngClass]="{ 'navbar-mobile': isMobileNavOpen }">
         <ul>
           <li><a class="nav-link scrollto active" routerLink="home">الرئيسية</a></li>
           <li><a class="nav-link scrollto" href="#about">معلومات عنا</a></li>
