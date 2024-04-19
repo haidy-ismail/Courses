@@ -18,6 +18,9 @@ import { LanguagesComponent } from './components/InterConstructionCentre/internP
 import { MangmentComponent } from './components/InterConstructionCentre/internProgram/long-term/mangment/mangment.component';
 import { NursingComponent } from './components/InterConstructionCentre/internProgram/long-term/nursing/nursing.component';
 import { LogInComponent } from './components/log-in/log-in.component';
+import { BuildingInstituteComponent } from './components/building-institute/building-institute.component';
+import { VisionComponent } from './components/building-institute/vision/vision.component';
+import { AdditionsComponent } from './components/building-institute/additions/additions.component';
 
 const routes: Routes = [
   {path:'home',component:MainComponent},
@@ -38,8 +41,10 @@ const routes: Routes = [
   {path:'language',component:LanguagesComponent},
   {path:'manage',component:MangmentComponent},
   {path:'nursing',component:NursingComponent},
-  {path:'**',component:MainComponent}
-
+  {path:'**',component:MainComponent},
+  {path:'building-institute', component: BuildingInstituteComponent},
+  {path: 'vision', component: VisionComponent},
+  {path: 'additions', component: AdditionsComponent}
 ];
 
 @NgModule({

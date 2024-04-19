@@ -23,6 +23,9 @@ import { ComputersComponent } from './components/InterConstructionCentre/internP
 import { LanguagesComponent } from './components/InterConstructionCentre/internProgram/long-term/languages/languages.component';
 import { MangmentComponent } from './components/InterConstructionCentre/internProgram/long-term/mangment/mangment.component';
 import { NursingComponent } from './components/InterConstructionCentre/internProgram/long-term/nursing/nursing.component';
+import { BuildingInstituteComponent } from './components/building-institute/building-institute.component';
+import { VisionComponent } from './components/building-institute/vision/vision.component';
+import { AdditionsComponent } from './components/building-institute/additions/additions.component';
 
 
 @NgModule({
@@ -49,7 +52,10 @@ import { NursingComponent } from './components/InterConstructionCentre/internPro
     NursingComponent,
     
     RegistrationComponent,
-    LogInComponent
+    LogInComponent,
+    BuildingInstituteComponent,
+    VisionComponent,
+    AdditionsComponent
   ],
   imports: [
     BrowserModule,
