@@ -26,6 +26,13 @@ import { NursingComponent } from './components/InterConstructionCentre/internPro
 import { BuildingInstituteComponent } from './components/building-institute/building-institute.component';
 import { VisionComponent } from './components/building-institute/vision/vision.component';
 import { AdditionsComponent } from './components/building-institute/additions/additions.component';
+import { ApplyComponent } from './components/InterConstructionCentre/internProgram/apply/apply.component';
+import { TraineesAffairsComponent } from './components/InterConstructionCentre/internProgram/trainees-affairs/trainees-affairs.component';
+import { EnrollComponent } from './components/InterConstructionCentre/Courses/enroll/enroll.component';
+import { EnquiryComponent } from './components/InterConstructionCentre/Courses/enquiry/enquiry.component';
+import { ProblemInternComponent } from './components/InterConstructionCentre/internProgram/problem-intern/problem-intern.component';
+import { ApplyMemComponent } from './components/membership/apply-mem/apply-mem.component';
+import { GuidMemComponent } from './components/membership/guid-mem/guid-mem.component';
 
 
 @NgModule({
@@ -55,7 +62,14 @@ import { AdditionsComponent } from './components/building-institute/additions/ad
     LogInComponent,
     BuildingInstituteComponent,
     VisionComponent,
-    AdditionsComponent
+    AdditionsComponent,
+    ApplyComponent,
+    TraineesAffairsComponent,
+    EnrollComponent,
+    EnquiryComponent,
+    ProblemInternComponent,
+    ApplyMemComponent,
+    GuidMemComponent
   ],
   imports: [
     BrowserModule,

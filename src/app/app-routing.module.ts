@@ -21,6 +21,14 @@ import { LogInComponent } from './components/log-in/log-in.component';
 import { BuildingInstituteComponent } from './components/building-institute/building-institute.component';
 import { VisionComponent } from './components/building-institute/vision/vision.component';
 import { AdditionsComponent } from './components/building-institute/additions/additions.component';
+import { EnrollComponent } from './components/InterConstructionCentre/Courses/enroll/enroll.component';
+import { EnquiryComponent } from './components/InterConstructionCentre/Courses/enquiry/enquiry.component';
+import { TraineesAffairsComponent } from './components/InterConstructionCentre/internProgram/trainees-affairs/trainees-affairs.component';
+import { ProblemInternComponent } from './components/InterConstructionCentre/internProgram/problem-intern/problem-intern.component';
+import { ProblemsComponent } from './components/InterConstructionCentre/Courses/problems/problems.component';
+import { ApplyComponent } from './components/InterConstructionCentre/internProgram/apply/apply.component';
+import { ResultComponent } from './components/InterConstructionCentre/internProgram/result/result.component';
+
 
 const routes: Routes = [
   {path:'home',component:MainComponent},
@@ -41,10 +49,19 @@ const routes: Routes = [
   {path:'language',component:LanguagesComponent},
   {path:'manage',component:MangmentComponent},
   {path:'nursing',component:NursingComponent},
-  {path:'**',component:MainComponent},
   {path:'building-institute', component: BuildingInstituteComponent},
   {path: 'vision', component: VisionComponent},
-  {path: 'additions', component: AdditionsComponent}
+  {path: 'additions', component: AdditionsComponent},
+  {path:'applyCourse',component:EnrollComponent},
+  {path:'problemsCourse',component:ProblemsComponent},
+  {path:'enquiry',component:EnquiryComponent},
+  {path:'trainee',component:TraineesAffairsComponent},
+  {path:'problemIntern',component:ProblemInternComponent},
+  {path:'applicant',component:ApplyComponent},
+  {path:'result',component:ResultComponent},
+  {path:'**',component:MainComponent}
+  
+
 ];
 
 @NgModule({

@@ -5,13 +5,13 @@
       <h1 class="logo"><a href="index.html">البناء الدولية</a></h1>
   
       
-      <nav id="navbar" class="navbar" [ngClass]="{ 'navbar-mobile': isMobileNavOpen }">
+        <nav id="navbar" class="navbar" [ngClass]="{ 'navbar-mobile': isMobileNavOpen }">
         <ul>
           <li><a class="nav-link scrollto active" routerLink="home">الرئيسية</a></li>
-          <li><a class="nav-link scrollto" href="#about">معلومات عنا</a></li>
+          <li><a class="nav-link scrollto" routerLink="applicant">طلب التحاق</a></li>
           <li><a class="nav-link scrollto" href="#services">خدمات</a></li>
           <li><a class="nav-link scrollto" href="#portfolio">Portfolio</a></li>
-          <li><a class="nav-link scrollto" routerLink="longTerm">التدريب المهني</a></li>
+          <li><a class="nav-link scrollto" routerLink="longTerm">مركز البناء</a></li>
           <li><a routerLink="jobs">وظائف</a></li>
           <li class="dropdown"><a href="" (click)="toggleDropdown($event)"><span>مؤسسه البناء</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
