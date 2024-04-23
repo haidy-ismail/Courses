@@ -13,24 +13,33 @@
           <li><a class="nav-link scrollto" href="#portfolio">Portfolio</a></li>
           <li><a class="nav-link scrollto" routerLink="longTerm">مركز البناء</a></li>
           <li><a routerLink="jobs">وظائف</a></li>
+          <li class="dropdown"><a href="" (click)="toggleDropdown($event)"><span>شركة البناء</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a routerLink="building-institute">شركة البناء</a></li>
+              <li><a routerLink="vision">الرؤية</a></li>
+            </ul>
+          </li>
           <li class="dropdown"><a href="" (click)="toggleDropdown($event)"><span>مؤسسه البناء</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a routerLink="ConstFoundation">أنشطة المؤسسة</a></li>
               <li><a routerLink="enroll">تقديم طلب</a></li>
             </ul>
           </li>
-          <li><a class="nav-link scrollto" routerLink="contact">أتصل بنا</a></li>
-          <!-- <li><a class="getstarted scrollto" href="#about">Get Started</a></li> -->
-          <div class="dropdown ">
-            <button class="getstarted scrollto my-btn"  type="button" data-bs-toggle="dropdown" aria-expanded="false" (click)="toggleDropdown($event)">
-              المزيد
-            </button>
-            <ul class="dropdown-menu">
+          <!-- <li><a class="nav-link scrollto" href="#services">خدمات</a></li>
+          <li><a class="nav-link scrollto" href="#portfolio">Portfolio</a></li> -->
+          <li class="dropdown"><a href="" (click)="toggleDropdown($event)"><span>المركز الأعلامي</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
               <li><a class="dropdown-item" routerLink="news">الاخبار</a></li>
               <li><a class="dropdown-item" routerLink="magazine">المجله</a></li>
               <li><a class="dropdown-item" href="#">Something else here</a></li>
             </ul>
-          </div>
+          </li>
+          <li><a class="nav-link scrollto" routerLink="longTerm">التدريب المهني</a></li>
+          <li><a routerLink="jobs">وظائف</a></li>
+          
+          <li><a class="nav-link scrollto" routerLink="contact">أتصل بنا</a></li>
+          <!-- <li><a class="getstarted scrollto" href="#about">Get Started</a></li> -->
+          
           <li><a class="getstarted scrollto" routerLink="registration">تـسجيل الـدخول</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle" (click)="toggleMobileNav()"></i>
