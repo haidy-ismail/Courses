@@ -28,6 +28,7 @@ import { ProblemInternComponent } from './components/InterConstructionCentre/int
 import { ProblemsComponent } from './components/InterConstructionCentre/Courses/problems/problems.component';
 import { ApplyComponent } from './components/InterConstructionCentre/internProgram/apply/apply.component';
 import { ResultComponent } from './components/InterConstructionCentre/internProgram/result/result.component';
+import { ApplyMemComponent } from './components/membership/apply-mem/apply-mem.component';
 
 
 const routes: Routes = [
@@ -59,6 +60,7 @@ const routes: Routes = [
   {path:'problemIntern',component:ProblemInternComponent},
   {path:'applicant',component:ApplyComponent},
   {path:'result',component:ResultComponent},
+  {path:'membershipApply',component:ApplyMemComponent},
   {path:'**',component:MainComponent}
   
 
