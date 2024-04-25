@@ -15,7 +15,27 @@
                   type="text"
                   name="name"
                   class="form-control"
-                  placeholder="اسم المتقدم"
+                  placeholder="اسم المتقدم باللغه العربيه"
+                  required
+                />
+              </div>
+
+              <div class="col-md-12">
+                <input
+                  type="text"
+                  name="name"
+                  class="form-control"
+                  placeholder="اسم المتقدم باللغه الانجليزية"
+                  required
+                />
+              </div>
+
+              <div class="col-md-12">
+                <input
+                  type="text"
+                  name="name"
+                  class="form-control"
+                  placeholder=" الرقم القومي"
                   required
                 />
               </div>
@@ -39,20 +59,91 @@
                   required
                 />
               </div>
+
+              <div class="col-md-12">
+                <input
+                  type="text"
+                  class="form-control"
+                  name="city"
+                  placeholder=" المحافظة"
+                  required
+                />
+              </div>
+
+              <div class="col-md-12">
+                <input
+                  type="text"
+                  class="form-control"
+                  name="address"
+                  placeholder=" العنوان"
+                  required
+                />
+              </div>
+
+              <h6>النوع:</h6>
+              <div class="form-check mt-1">
+                <input class="ms-2 " type="radio" name="أنثي" id="flexRadioDefault1">
+                <label  for="أنثي">
+                  أنثي 
+                </label>
+              </div>
+              <div class="form-check mt-1">
+                <input class="ms-2" type="radio" name="ذكر" id="flexRadioDefault2" >
+                <label  for="ذكر">
+                 ذكر
+                </label>
+              </div>
+
+              <h6>الاجتماعية:</h6>
+              <div class="form-check mt-1">
+                <input class="ms-2 " type="radio" name="اعزب" id="flexRadioDefault1">
+                <label  for="اعزب">
+                  اعزب 
+                </label>
+              </div>
+              <div class="form-check mt-1">
+                <input class="ms-2" type="radio" name="متزوج" id="flexRadioDefault2" >
+                <label  for="متزوج">
+                 متزوج
+                </label>
+              </div>
+
+              
  
               <div class="col-md-12">
                 <select class="form-select" aria-label="Default select example">
                   <option selected disabled>
                     نوع العضوية ؟
                   </option>
-                  <option value="برونزي">برونزي</option>
-                  <option value="فضي">فضي</option>
+                  <option value="ماسيه">ماسيه</option>
                   <option value="ذهبي">ذهبي</option>
+                  <option value="فضي">فضي</option>
+                </select>
+              </div>
+
+              <div class="col-md-12">
+                <select class="form-select" aria-label="Default select example">
+                  <option selected disabled>
+                    نظام العضوية ؟
+                  </option>
+                  <option value="نصف سنويه">نضف سنويه</option>
+                  <option value="سنويه">سنويه</option>
+                  <option value="سنتين">سنتين</option>
+                  <option value="خمس سنوات">خمس سنوات</option>
+
                 </select>
               </div>
   
   
-  
+              <div class="col-md-12">
+                <select class="form-select" aria-label="Default select example">
+                  <option selected disabled>
+                  فئةالعضوية ؟
+                  </option>
+                  <option value="فردي">فردي</option>
+                  <option value="عائلي">عائلي (لنظام الخمس سنوات فقط)</option>
+                </select>
+              </div>
               
 
   
