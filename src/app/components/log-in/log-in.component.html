@@ -4,23 +4,46 @@
 <div class="container">
     <div class="title">تسجيل الدخول</div>
     <div class="content">
-      <form action="#">
+      <form action="#" [formGroup]="loginForm">
         <div class="user-details">
-          <div class="input-box">
+          <!-- <div class="input-box">
             <span class="details">البريد الالكتروني</span>
             <input type="text" placeholder="البريد الالكتروني" required>
           </div>
          
           <div class="input-box">
             <span class="details">كلمة المرور</span>
+           
             <input type="text" placeholder="كلمة المرور" required>
+            <i  class="bi bi-eye-slash"></i>
+          </div> -->
+
+          <div class="input-box">
+            <label class="details">البريد الالكتروني</label>
+            <input type="text" formControlName="email" placeholder="البريد الالكتروني" required>
+          <small *ngIf="loginForm.controls['email'].dirty && loginForm.hasError('required','email')" class="text-danger">*Email is required</small>
+          </div>
+         
+          <div class="input-box">
+            <label class="details">كلمة المرور</label>
+            <!-- <input [type]="passtype" placeholder="كلمة المرور" required> -->
+            <input type="password" formControlName="password" placeholder="كلمة المرور" required>
+            <small *ngIf="loginForm.controls['password'].dirty && loginForm.hasError('required','password')" class="text-danger">*Password is required</small>
+            <!-- <i (click)="hideShowPass()" class="bi bi-eye-slash"></i> -->
           </div>
         
         </div>
-        
-        <div class="button">
-          <input type="submit" value="تسجيل">
+
+        <div class="form-inlline fr mt-4">
+          <a id="forget" class="font-weight-bold">نسيت كلمة المرور؟</a>
+
         </div>
+        
+        <!-- <div class="button"  >
+          <input [disabled]="loginForm.invalid"  type="submit" value="تسجيل">
+        </div> -->
+
+        <button (click)="OnLogIn()" type="submit" class="button">تسجيل</button>
       </form>
     </div>
   </div>

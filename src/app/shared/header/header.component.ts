@@ -1,11 +1,30 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ApiServiceService } from 'src/app/services/api-service.service';
+import { AuthService } from 'src/app/services/auth.service';
+import { UserStoreService } from 'src/app/services/user-store.service';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
+
+
+  public fullName:string ="";
+
+  constructor(private api: ApiServiceService, private auth: AuthService,
+    private userStore: UserStoreService){
+    
+  }
+  ngOnInit(){
+    this.userStore.getFullNameFromStore().subscribe(val=>{
+      const fullNameFromToken = this.auth.getFullNameFromToken();
+      this.fullName = val || fullNameFromToken
+    })
+  }
+  
+
 
   isMobileNavOpen: boolean = false;
 
@@ -54,6 +73,8 @@ export class HeaderComponent {
     this.scrollToElement(hash);
   }
 
+  
+  
   // toggleDropdown(event: MouseEvent) {
   //   event.preventDefault();
   //   const target = event.currentTarget as HTMLElement;

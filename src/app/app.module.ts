@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -33,7 +33,11 @@ import { EnquiryComponent } from './components/InterConstructionCentre/Courses/e
 import { ProblemInternComponent } from './components/InterConstructionCentre/internProgram/problem-intern/problem-intern.component';
 import { ApplyMemComponent } from './components/membership/apply-mem/apply-mem.component';
 import { GuidMemComponent } from './components/membership/guid-mem/guid-mem.component';
-
+import { ReactiveFormsModule } from '@angular/forms';
+import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
+import { NgToastModule } from 'ng-angular-popup';
+import { DashBoardComponent } from './components/dash-board/dash-board.component';
+import { TokenInterceptor } from './interceptors/token.interceptor';
 
 @NgModule({
   declarations: [
@@ -69,13 +73,23 @@ import { GuidMemComponent } from './components/membership/guid-mem/guid-mem.comp
     EnquiryComponent,
     ProblemInternComponent,
     ApplyMemComponent,
-    GuidMemComponent
+    GuidMemComponent,
+    DashBoardComponent
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    NgToastModule,
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: TokenInterceptor,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

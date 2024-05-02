@@ -29,6 +29,8 @@ import { ProblemsComponent } from './components/InterConstructionCentre/Courses/
 import { ApplyComponent } from './components/InterConstructionCentre/internProgram/apply/apply.component';
 import { ResultComponent } from './components/InterConstructionCentre/internProgram/result/result.component';
 import { ApplyMemComponent } from './components/membership/apply-mem/apply-mem.component';
+import { DashBoardComponent } from './components/dash-board/dash-board.component';
+import { authGuard } from './gaurds/auth.guard';
 
 
 const routes: Routes = [
@@ -61,6 +63,7 @@ const routes: Routes = [
   {path:'applicant',component:ApplyComponent},
   {path:'result',component:ResultComponent},
   {path:'membershipApply',component:ApplyMemComponent},
+  {path: 'dashboard', component: DashBoardComponent, canActivate: [authGuard]},
   {path:'**',component:MainComponent}
   
 
