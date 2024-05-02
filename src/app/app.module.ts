@@ -1,6 +1,5 @@
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './shared/header/header.component';
@@ -113,7 +112,18 @@ import { TokenInterceptor } from './interceptors/token.interceptor';
     AidComponent,
     SpaceDiplomaComponent,
     
-
+    RegistrationComponent,
+    LogInComponent,
+    BuildingInstituteComponent,
+    VisionComponent,
+    AdditionsComponent,
+    ApplyComponent,
+    TraineesAffairsComponent,
+    EnrollComponent,
+    EnquiryComponent,
+    ProblemInternComponent,
+    ApplyMemComponent,
+    GuidMemComponent,
     DashBoardComponent
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
@@ -124,7 +134,7 @@ import { TokenInterceptor } from './interceptors/token.interceptor';
     CommonModule,
     ReactiveFormsModule,
     HttpClientModule,
-    NgToastModule,
+    NgToastModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
