@@ -108,10 +108,12 @@ form .input-box span.details{
    height: 45px;
    margin: 35px 0
  }
- form .button input{
+ form .button {
    height: 100%;
    width: 100%;
    border-radius: 5px;
+   padding-top: 5px;
+   padding-bottom: 5px;
    border: none;
    color: #fff;
    font-size: 18px;
@@ -121,7 +123,7 @@ form .input-box span.details{
    transition: all 0.3s ease;
    background: linear-gradient(90deg, rgba(7,36,0,1) 0%, rgba(13,121,20,1) 33%, rgba(20,85,98,1) 100%);
  }
- form .button input:hover{
+ form .button:hover{
   /* transform: scale(0.99); */
   background: linear-gradient(-90deg, rgba(7,36,0,1) 0%, rgba(13,121,20,1) 33%, rgba(20,85,98,1) 100%);
   }

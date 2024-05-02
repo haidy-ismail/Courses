@@ -1,4 +1,4 @@
-import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, HostListener, ElementRef, ViewChild } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 
 @Component({
@@ -8,10 +8,10 @@ import { NavigationEnd, Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit{
   @ViewChild('navbar', { static: true }) navbar: ElementRef<HTMLElement> | undefined;
-  constructor(private router: Router) {}
 
   isMobileNavOpen: boolean = false;
 
+  constructor(private router: Router) {}
 
   ngOnInit(): void {
     this.updateActiveNavLinks();
@@ -59,13 +59,6 @@ export class HeaderComponent implements OnInit{
     });
 }
 
-  
-
-
-
-
-
-
 
   toggleMobileNav() {
     const navbar = document.querySelector('#navbar');
@@ -112,7 +105,14 @@ export class HeaderComponent implements OnInit{
     this.scrollToElement(hash);
   }
 
-  
+  // toggleDropdown(event: MouseEvent) {
+  //   event.preventDefault();
+  //   const target = event.currentTarget as HTMLElement;
+  //   const dropdown = target.nextElementSibling;
+  //   if (dropdown !== null) {
+  //     dropdown.classList.toggle('dropdown-active');
+  //   }
+  // }
   
 
 }

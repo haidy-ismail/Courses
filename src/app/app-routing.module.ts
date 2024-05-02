@@ -48,6 +48,8 @@ import { DashboardComponent } from './components/admin/controller/dashboard/dash
 import { IcdlComponent } from './components/InterConstructionCentre/Courses/about-course/icdl/icdl.component';
 import { AidComponent } from './components/InterConstructionCentre/Courses/about-course/aid/aid.component';
 import { SpaceDiplomaComponent } from './components/InterConstructionCentre/Courses/about-course/space-diploma/space-diploma.component';
+import { DashBoardComponent } from './components/dash-board/dash-board.component';
+import { authGuard } from './gaurds/auth.guard';
 
 
 const routes: Routes = [
@@ -99,7 +101,7 @@ const routes: Routes = [
   {path:'icdl',component:IcdlComponent},
   {path:'aid',component:AidComponent},
   {path:'spaceDiploma',component:SpaceDiplomaComponent},
-
+  {path: 'dashboard', component: DashBoardComponent, canActivate: [authGuard]},
   {path:'**',component:MainComponent}
   
 

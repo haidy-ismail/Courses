@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -53,6 +53,11 @@ import { DashboardComponent } from './components/admin/controller/dashboard/dash
 import { IcdlComponent } from './components/InterConstructionCentre/Courses/about-course/icdl/icdl.component';
 import { AidComponent } from './components/InterConstructionCentre/Courses/about-course/aid/aid.component';
 import { SpaceDiplomaComponent } from './components/InterConstructionCentre/Courses/about-course/space-diploma/space-diploma.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
+import { NgToastModule } from 'ng-angular-popup';
+import { DashBoardComponent } from './components/dash-board/dash-board.component';
+import { TokenInterceptor } from './interceptors/token.interceptor';
 
 @NgModule({
   declarations: [
@@ -106,17 +111,26 @@ import { SpaceDiplomaComponent } from './components/InterConstructionCentre/Cour
     DashboardComponent,
     IcdlComponent,
     AidComponent,
-    SpaceDiplomaComponent
+    SpaceDiplomaComponent,
     
 
+    DashBoardComponent
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  
   imports: [
     BrowserModule,
     AppRoutingModule,
     CommonModule,
-
+    ReactiveFormsModule,
+    HttpClientModule,
+    NgToastModule,
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: TokenInterceptor,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

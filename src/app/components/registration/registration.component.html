@@ -2,37 +2,37 @@
 <div class="container">
     <div class="title">تسجيل الدخول</div>
     <div class="content">
-      <form action="#">
+      <form [formGroup]="signUpForm">
         <div class="user-details">
           <div class="input-box">
-            <span class="details">الأسم كامل</span>
-            <input type="text" placeholder=" الاسم " required>
+            <span class="details" >الأسم كامل</span>
+            <input type="text" formControlName="fullName" placeholder=" الاسم " required>
           </div>
           <div class="input-box">
-            <span class="details">اسم المستحدم</span>
-            <input type="text" placeholder=" اسم المستخدم" required>
+            <span class="details" >اسم المستحدم</span>
+            <input type="text" formControlName="username" placeholder=" اسم المستخدم" required>
           </div>
           <div class="input-box">
-            <span class="details">البريد الالكتروني</span>
-            <input type="text" placeholder="البريد الالكتروني" required>
+            <span class="details" >البريد الالكتروني</span>
+            <input type="text" formControlName="email" placeholder="البريد الالكتروني" required>
           </div>
           <div class="input-box">
-            <span class="details">رقم الهاتف</span>
-            <input type="text" placeholder="رقم الهاتف" required>
+            <span class="details" >رقم الهاتف</span>
+            <input type="text" formControlName="phone" placeholder="رقم الهاتف" required>
           </div>
           <div class="input-box">
             <span class="details">كلمة المرور</span>
-            <input type="text" placeholder="كلمة المرور" required>
+            <input type="password" formControlName="password" placeholder="كلمة المرور" required>
           </div>
           <div class="input-box">
             <span class="details">تأكيد كلمة المرور</span>
-            <input type="text" placeholder="اعادة كلمة المرور" required>
+            <input type="password" formControlName="confirmPassword" placeholder="اعادة كلمة المرور" required>
           </div>
         </div>
-        <div class="gender-details">
-          <input type="radio" name="gender" id="dot-1">
-          <input type="radio" name="gender" id="dot-2">
-          <input type="radio" name="gender" id="dot-3">
+        <!-- <div formControlName="type" class="gender-details">
+          <input type="radio"  name="gender" id="dot-1">
+          <input type="radio"  name="gender" id="dot-2">
+          <input type="radio"  name="gender" id="dot-3">
           <span class="gender-title">النـوع</span>
           <div class="category">
             <label for="dot-1">
@@ -48,14 +48,17 @@
             <span class="gender">نوع اخر</span>
             </label>
           </div>
-        </div>
-        <div class="button">
+        </div> -->
+        <!-- <div class="button">
           <input type="submit" value="تسجيل">
-        </div>
+        </div> -->
 
         <div class="log">
           <a routerLink="../login">لدي حساب بالفعل</a>
         </div>
+
+        <button (click)="signUp()" type="submit" class="button">تسجيل</button>
+
       </form>
     </div>
   </div>
