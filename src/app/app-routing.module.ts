@@ -29,6 +29,25 @@ import { ProblemsComponent } from './components/InterConstructionCentre/Courses/
 import { ApplyComponent } from './components/InterConstructionCentre/internProgram/apply/apply.component';
 import { ResultComponent } from './components/InterConstructionCentre/internProgram/result/result.component';
 import { ApplyMemComponent } from './components/membership/apply-mem/apply-mem.component';
+import { AboutCourseComponent } from './components/InterConstructionCentre/Courses/about-course/about-course.component';
+import { AutocadComponent } from './components/InterConstructionCentre/Courses/about-course/autocad/autocad.component';
+import { ElectricComponent } from './components/InterConstructionCentre/Courses/about-course/electric/electric.component';
+import { GISComponent } from './components/InterConstructionCentre/Courses/about-course/gis/gis.component';
+import { GraphicComponent } from './components/InterConstructionCentre/Courses/about-course/graphic/graphic.component';
+import { HtmlComponent } from './components/InterConstructionCentre/Courses/about-course/html/html.component';
+import { Max3Component } from './components/InterConstructionCentre/Courses/about-course/max3/max3.component';
+import { QuantityComponent } from './components/InterConstructionCentre/Courses/about-course/quantity/quantity.component';
+import { RevitComponent } from './components/InterConstructionCentre/Courses/about-course/revit/revit.component';
+import { ScratchComponent } from './components/InterConstructionCentre/Courses/about-course/scratch/scratch.component';
+import { SiteEngineerComponent } from './components/InterConstructionCentre/Courses/about-course/site-engineer/site-engineer.component';
+import { SpaceComponent } from './components/InterConstructionCentre/Courses/about-course/space/space.component';
+import { SummerTraningComponent } from './components/InterConstructionCentre/Courses/about-course/summer-traning/summer-traning.component';
+import { TechnicalComponent } from './components/InterConstructionCentre/Courses/about-course/technical/technical.component';
+import { ControlPannelComponent } from './components/admin/controller/control-pannel/control-pannel.component';
+import { DashboardComponent } from './components/admin/controller/dashboard/dashboard.component';
+import { IcdlComponent } from './components/InterConstructionCentre/Courses/about-course/icdl/icdl.component';
+import { AidComponent } from './components/InterConstructionCentre/Courses/about-course/aid/aid.component';
+import { SpaceDiplomaComponent } from './components/InterConstructionCentre/Courses/about-course/space-diploma/space-diploma.component';
 
 
 const routes: Routes = [
@@ -61,6 +80,26 @@ const routes: Routes = [
   {path:'applicant',component:ApplyComponent},
   {path:'result',component:ResultComponent},
   {path:'membershipApply',component:ApplyMemComponent},
+  {path:'aboutCourse',component:AboutCourseComponent},
+  {path:'autocad',component:AutocadComponent},
+  {path:'electric',component:ElectricComponent},
+  {path:'gis',component:GISComponent},
+  {path:'graphic',component:GraphicComponent},
+  {path:'html',component:HtmlComponent},
+  {path:'max3',component:Max3Component},
+  {path:'quantity',component:QuantityComponent},
+  {path:'revit',component:RevitComponent},
+  {path:'scratch',component:ScratchComponent},
+  {path:'site',component:SiteEngineerComponent},
+  {path:'space',component:SpaceComponent},
+  {path:'summer',component:SummerTraningComponent},
+  {path:'tech',component:TechnicalComponent},
+  {path:'controll',component:ControlPannelComponent},
+  {path:'dash',component:DashboardComponent},
+  {path:'icdl',component:IcdlComponent},
+  {path:'aid',component:AidComponent},
+  {path:'spaceDiploma',component:SpaceDiplomaComponent},
+
   {path:'**',component:MainComponent}
   
 

@@ -33,11 +33,30 @@ import { EnquiryComponent } from './components/InterConstructionCentre/Courses/e
 import { ProblemInternComponent } from './components/InterConstructionCentre/internProgram/problem-intern/problem-intern.component';
 import { ApplyMemComponent } from './components/membership/apply-mem/apply-mem.component';
 import { GuidMemComponent } from './components/membership/guid-mem/guid-mem.component';
-
+import { AboutCourseComponent } from './components/InterConstructionCentre/Courses/about-course/about-course.component';
+import { Max3Component } from './components/InterConstructionCentre/Courses/about-course/max3/max3.component';
+import { SpaceComponent } from './components/InterConstructionCentre/Courses/about-course/space/space.component';
+import { AutocadComponent } from './components/InterConstructionCentre/Courses/about-course/autocad/autocad.component';
+import { TechnicalComponent } from './components/InterConstructionCentre/Courses/about-course/technical/technical.component';
+import { GISComponent } from './components/InterConstructionCentre/Courses/about-course/gis/gis.component';
+import { RevitComponent } from './components/InterConstructionCentre/Courses/about-course/revit/revit.component';
+import { ElectricComponent } from './components/InterConstructionCentre/Courses/about-course/electric/electric.component';
+import { GraphicComponent } from './components/InterConstructionCentre/Courses/about-course/graphic/graphic.component';
+import { QuantityComponent } from './components/InterConstructionCentre/Courses/about-course/quantity/quantity.component';
+import { SiteEngineerComponent } from './components/InterConstructionCentre/Courses/about-course/site-engineer/site-engineer.component';
+import { SummerTraningComponent } from './components/InterConstructionCentre/Courses/about-course/summer-traning/summer-traning.component';
+import { HtmlComponent } from './components/InterConstructionCentre/Courses/about-course/html/html.component';
+import { ScratchComponent } from './components/InterConstructionCentre/Courses/about-course/scratch/scratch.component';
+import { ControlPannelComponent } from './components/admin/controller/control-pannel/control-pannel.component';
+import { CommonModule } from '@angular/common';
+import { DashboardComponent } from './components/admin/controller/dashboard/dashboard.component';
+import { IcdlComponent } from './components/InterConstructionCentre/Courses/about-course/icdl/icdl.component';
+import { AidComponent } from './components/InterConstructionCentre/Courses/about-course/aid/aid.component';
+import { SpaceDiplomaComponent } from './components/InterConstructionCentre/Courses/about-course/space-diploma/space-diploma.component';
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent,   
     HeaderComponent,
     FooterComponent,
     ContactComponent,
@@ -57,7 +76,6 @@ import { GuidMemComponent } from './components/membership/guid-mem/guid-mem.comp
     LanguagesComponent,
     MangmentComponent,
     NursingComponent,
-    
     RegistrationComponent,
     LogInComponent,
     BuildingInstituteComponent,
@@ -69,11 +87,34 @@ import { GuidMemComponent } from './components/membership/guid-mem/guid-mem.comp
     EnquiryComponent,
     ProblemInternComponent,
     ApplyMemComponent,
-    GuidMemComponent
+    GuidMemComponent,
+    AboutCourseComponent,
+    Max3Component,
+    SpaceComponent,
+    AutocadComponent,
+    TechnicalComponent,
+    GISComponent,
+    RevitComponent,
+    ElectricComponent,
+    GraphicComponent,
+    QuantityComponent,
+    SiteEngineerComponent,
+    SummerTraningComponent,
+    HtmlComponent,
+    ScratchComponent,
+    ControlPannelComponent,
+    DashboardComponent,
+    IcdlComponent,
+    AidComponent,
+    SpaceDiplomaComponent
+    
+
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    CommonModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]

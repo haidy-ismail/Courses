@@ -1,13 +1,71 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
+import { NavigationEnd, Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit{
+  @ViewChild('navbar', { static: true }) navbar: ElementRef<HTMLElement> | undefined;
+  constructor(private router: Router) {}
 
   isMobileNavOpen: boolean = false;
+
+
+  ngOnInit(): void {
+    this.updateActiveNavLinks();
+
+    // Listen to router events to update active navbar links on route changes
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        this.updateActiveNavLinks();
+      }
+    });
+  }
+
+  @HostListener('window:scroll')
+  onWindowScroll(): void {
+    // Update active navbar links on window scroll
+    this.updateActiveNavLinks();
+  }
+
+  private updateActiveNavLinks(): void {
+    if (!this.navbar) return;
+
+    const position = window.scrollY + 200;
+    const navbarLinks = this.navbar.nativeElement.querySelectorAll('.scrollto');
+    
+    navbarLinks.forEach((link: Element) => {
+        // Cast link to HTMLElement to access properties like classList
+        const htmlLink = link as HTMLElement;
+        
+        // Clear active class from all links
+        htmlLink.classList.remove('active');
+
+        const href = htmlLink.getAttribute('href') || htmlLink.getAttribute('routerLink');
+        if (!href) return;
+
+        const section = document.querySelector(href);
+        if (!section) return;
+
+        const sectionTop = section.getBoundingClientRect().top + window.scrollY;
+        const sectionBottom = sectionTop + section.clientHeight;
+
+        // Add active class to the link if it's within the section range
+        if (position >= sectionTop && position <= sectionBottom) {
+            htmlLink.classList.add('active');
+        }
+    });
+}
+
+  
+
+
+
+
+
+
 
   toggleMobileNav() {
     const navbar = document.querySelector('#navbar');
@@ -54,14 +112,7 @@ export class HeaderComponent {
     this.scrollToElement(hash);
   }
 
-  // toggleDropdown(event: MouseEvent) {
-  //   event.preventDefault();
-  //   const target = event.currentTarget as HTMLElement;
-  //   const dropdown = target.nextElementSibling;
-  //   if (dropdown !== null) {
-  //     dropdown.classList.toggle('dropdown-active');
-  //   }
-  // }
+  
   
 
 }
