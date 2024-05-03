@@ -26,7 +26,6 @@ import { BuildingInstituteComponent } from './components/building-institute/buil
 import { VisionComponent } from './components/building-institute/vision/vision.component';
 import { AdditionsComponent } from './components/building-institute/additions/additions.component';
 import { ApplyComponent } from './components/InterConstructionCentre/internProgram/apply/apply.component';
-import { TraineesAffairsComponent } from './components/InterConstructionCentre/internProgram/trainees-affairs/trainees-affairs.component';
 import { EnrollComponent } from './components/InterConstructionCentre/Courses/enroll/enroll.component';
 import { EnquiryComponent } from './components/InterConstructionCentre/Courses/enquiry/enquiry.component';
 import { ProblemInternComponent } from './components/InterConstructionCentre/internProgram/problem-intern/problem-intern.component';
@@ -86,7 +85,6 @@ import { TokenInterceptor } from './interceptors/token.interceptor';
     VisionComponent,
     AdditionsComponent,
     ApplyComponent,
-    TraineesAffairsComponent,
     EnrollComponent,
     EnquiryComponent,
     ProblemInternComponent,
@@ -111,14 +109,12 @@ import { TokenInterceptor } from './interceptors/token.interceptor';
     IcdlComponent,
     AidComponent,
     SpaceDiplomaComponent,
-    
     RegistrationComponent,
     LogInComponent,
     BuildingInstituteComponent,
     VisionComponent,
     AdditionsComponent,
     ApplyComponent,
-    TraineesAffairsComponent,
     EnrollComponent,
     EnquiryComponent,
     ProblemInternComponent,

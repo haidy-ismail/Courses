@@ -282,8 +282,27 @@
   .navbar-mobile .dropdown ul .active:hover,
   .navbar-mobile .dropdown ul li:hover>a {
     color: #5c9f24;
+    
   }
   
-  .navbar-mobile .dropdown>.dropdown-active {
-    display: block;
+/* Default button styles */
+.getstarted.scrollto {
+  border: 2px solid #5c9f24; /* Button border color */
+  color: white; /* Initial text color */
+  padding: 10px;
+  /* Additional default styles */
+}
+
+/* Mobile mode: when screen width is less than 768px */
+@media (max-width: 768px) {
+  /* Adjust hover styles for mobile view */
+  .getstarted.scrollto:hover {
+      background-color: #5c9f24; /* Button background color */
+      color: white !important; /* Font color white on hover (important to override other styles) */
   }
+}
+
+.container .getstarted.scrollto:hover {
+  background-color: #5c9f24;
+  color: white;
+}
