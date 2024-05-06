@@ -23,7 +23,6 @@ import { VisionComponent } from './components/building-institute/vision/vision.c
 import { AdditionsComponent } from './components/building-institute/additions/additions.component';
 import { EnrollComponent } from './components/InterConstructionCentre/Courses/enroll/enroll.component';
 import { EnquiryComponent } from './components/InterConstructionCentre/Courses/enquiry/enquiry.component';
-import { TraineesAffairsComponent } from './components/InterConstructionCentre/internProgram/trainees-affairs/trainees-affairs.component';
 import { ProblemInternComponent } from './components/InterConstructionCentre/internProgram/problem-intern/problem-intern.component';
 import { ProblemsComponent } from './components/InterConstructionCentre/Courses/problems/problems.component';
 import { ApplyComponent } from './components/InterConstructionCentre/internProgram/apply/apply.component';
@@ -77,7 +76,6 @@ const routes: Routes = [
   {path:'applyCourse',component:EnrollComponent},
   {path:'problemsCourse',component:ProblemsComponent},
   {path:'enquiry',component:EnquiryComponent},
-  {path:'trainee',component:TraineesAffairsComponent},
   {path:'problemIntern',component:ProblemInternComponent},
   {path:'applicant',component:ApplyComponent},
   {path:'result',component:ResultComponent},

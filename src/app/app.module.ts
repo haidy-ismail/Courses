@@ -26,7 +26,6 @@ import { BuildingInstituteComponent } from './components/building-institute/buil
 import { VisionComponent } from './components/building-institute/vision/vision.component';
 import { AdditionsComponent } from './components/building-institute/additions/additions.component';
 import { ApplyComponent } from './components/InterConstructionCentre/internProgram/apply/apply.component';
-import { TraineesAffairsComponent } from './components/InterConstructionCentre/internProgram/trainees-affairs/trainees-affairs.component';
 import { EnrollComponent } from './components/InterConstructionCentre/Courses/enroll/enroll.component';
 import { EnquiryComponent } from './components/InterConstructionCentre/Courses/enquiry/enquiry.component';
 import { ProblemInternComponent } from './components/InterConstructionCentre/internProgram/problem-intern/problem-intern.component';
@@ -52,7 +51,7 @@ import { DashboardComponent } from './components/admin/controller/dashboard/dash
 import { IcdlComponent } from './components/InterConstructionCentre/Courses/about-course/icdl/icdl.component';
 import { AidComponent } from './components/InterConstructionCentre/Courses/about-course/aid/aid.component';
 import { SpaceDiplomaComponent } from './components/InterConstructionCentre/Courses/about-course/space-diploma/space-diploma.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
 import { NgToastModule } from 'ng-angular-popup';
 import { DashBoardComponent } from './components/dash-board/dash-board.component';
@@ -86,7 +85,6 @@ import { TokenInterceptor } from './interceptors/token.interceptor';
     VisionComponent,
     AdditionsComponent,
     ApplyComponent,
-    TraineesAffairsComponent,
     EnrollComponent,
     EnquiryComponent,
     ProblemInternComponent,
@@ -111,14 +109,12 @@ import { TokenInterceptor } from './interceptors/token.interceptor';
     IcdlComponent,
     AidComponent,
     SpaceDiplomaComponent,
-    
     RegistrationComponent,
     LogInComponent,
     BuildingInstituteComponent,
     VisionComponent,
     AdditionsComponent,
     ApplyComponent,
-    TraineesAffairsComponent,
     EnrollComponent,
     EnquiryComponent,
     ProblemInternComponent,
@@ -134,7 +130,9 @@ import { TokenInterceptor } from './interceptors/token.interceptor';
     CommonModule,
     ReactiveFormsModule,
     HttpClientModule,
-    NgToastModule
+    NgToastModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
