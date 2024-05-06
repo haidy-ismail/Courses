@@ -51,7 +51,7 @@ import { DashboardComponent } from './components/admin/controller/dashboard/dash
 import { IcdlComponent } from './components/InterConstructionCentre/Courses/about-course/icdl/icdl.component';
 import { AidComponent } from './components/InterConstructionCentre/Courses/about-course/aid/aid.component';
 import { SpaceDiplomaComponent } from './components/InterConstructionCentre/Courses/about-course/space-diploma/space-diploma.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
 import { NgToastModule } from 'ng-angular-popup';
 import { DashBoardComponent } from './components/dash-board/dash-board.component';
@@ -130,7 +130,9 @@ import { TokenInterceptor } from './interceptors/token.interceptor';
     CommonModule,
     ReactiveFormsModule,
     HttpClientModule,
-    NgToastModule
+    NgToastModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
