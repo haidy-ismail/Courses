@@ -2,12 +2,12 @@
   <header id="header" class="fixed-top d-flex align-items-center">
     <div class="container d-flex align-items-center justify-content-between">
   
-      <h1 class="logo"><a href="index.html">البناء الدولية</a></h1>
+      <h1 class="logo"><a routerLink="home">البناء الدولية</a></h1>
   
       <!-- [ngClass]="{ 'navbar-mobile': isMobileNavOpen }" -->
         <nav id="navbar" class="navbar" [ngClass]="{ 'navbar-mobile': isMobileNavOpen }">
         <ul>
-          <li><a class="nav-link scrollto active" routerLink="home">الرئيسية</a></li>
+          <!-- <li><a class="nav-link scrollto active" routerLink="home">الرئيسية</a></li> -->
           <!-- <li><a class="nav-link scrollto" routerLink="applicant">طلب التحاق</a></li> -->
           
        
@@ -49,6 +49,13 @@
             <ul>
               <li><a class="dropdown-item" routerLink="news">الاخبار</a></li>
               <li><a class="dropdown-item" routerLink="magazine">المجله</a></li>
+            </ul>
+          </li>
+
+          <li class="dropdown"><a href="" (click)="toggleDropdown($event)"><span> العضوية</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a class="dropdown-item" routerLink="membershipApply">تقديم طلب</a></li>
+              <li><a class="dropdown-item" routerLink="guideMem">عن العضويات</a></li>
             </ul>
           </li>
           <li><a routerLink="jobs">وظائف</a></li>

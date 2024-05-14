@@ -15,9 +15,16 @@ export class NewsService {
   private apiURL = 'https://localhost:7125/api/Newsss/addNews';
   private basicURL = 'https://localhost:7125/api/Newsss';
 
+  // getAllNews(){
+  //   // return this.http.get('https://localhost:7125/api/News/getAllNews')
+  //   return this.http.get('https://localhost:7125/api/Newsss');
+  // // private apiURL = 'https://localhost:7125/api/Newsss/addNews'
+  // // // private basicURL = 'https://localhost:7125/api/News'
+  // // private basicURL = 'https://localhost:7125/api/Newsss'
+
+  // }
   getAllNews(){
-    // return this.http.get('https://localhost:7125/api/News/getAllNews')
-    return this.http.get('https://localhost:7125/api/Newsss');
+    return this.http.get('https://localhost:7125/api/Newsss')
 
   }
 

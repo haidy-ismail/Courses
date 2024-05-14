@@ -56,6 +56,7 @@ import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common
 import { NgToastModule } from 'ng-angular-popup';
 import { DashBoardComponent } from './components/dash-board/dash-board.component';
 import { TokenInterceptor } from './interceptors/token.interceptor';
+import { ProblemsComponent } from './components/InterConstructionCentre/Courses/problems/problems.component';
 
 @NgModule({
   declarations: [
@@ -120,7 +121,8 @@ import { TokenInterceptor } from './interceptors/token.interceptor';
     ProblemInternComponent,
     ApplyMemComponent,
     GuidMemComponent,
-    DashBoardComponent
+    DashBoardComponent,
+    ProblemsComponent
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   
