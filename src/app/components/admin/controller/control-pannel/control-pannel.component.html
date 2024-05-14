@@ -37,7 +37,7 @@
             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
               <a class="dropdown-item" (click)="showNewsListHandler()">عرض</a>
               <a class="dropdown-item" (click)="showAddNewsHandler()">اضافه</a>
-              <a class="dropdown-item" (click)="showEditNewsHandler()">تعديل</a>
+              <!-- <a class="dropdown-item" (click)="showEditNewsHandler()">تعديل</a> -->
               <a class="dropdown-item" (click)="showDeleteNewsHandler()">حذف</a>
             </div>
           </li>
@@ -78,9 +78,9 @@
               <a class="dropdown-item" (click)="showMagazineAddHandler()"
                 >اضافه</a
               >
-              <a class="dropdown-item" (click)="showMagazineEditHandler()"
+              <!-- <a class="dropdown-item" (click)="showMagazineEditHandler()"
                 >تعديل</a
-              >
+              > -->
               <a class="dropdown-item" (click)="showMagazineDeleteHandler()"
                 >حذف</a
               >
@@ -120,7 +120,7 @@
             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
               <a class="dropdown-item" (click)="showJobsListHandler()">عرض</a>
               <a class="dropdown-item" (click)="showJobsAddHandler()">اضافه</a>
-              <a class="dropdown-item" (click)="showJobsEditHandler()">تعديل</a>
+              <!-- <a class="dropdown-item" (click)="showJobsEditHandler()">تعديل</a> -->
               <a class="dropdown-item" (click)="showJobsDeleteHandler()">حذف</a>
             </div>
           </li>
@@ -195,9 +195,9 @@
               <a class="dropdown-item" (click)="showAddCoursesHandler()"
                 >اضافه</a
               >
-              <a class="dropdown-item" (click)="showEditCoursesHandler()"
+              <!-- <a class="dropdown-item" (click)="showEditCoursesHandler()"
                 >تعديل</a
-              >
+              > -->
               <a class="dropdown-item" (click)="showDeleteCoursesHandler()"
                 >حذف</a
               >
@@ -236,9 +236,9 @@
               <a class="dropdown-item" (click)="showAddInternHandler()"
                 >اضافه</a
               >
-              <a class="dropdown-item" (click)="showEditInternHandler()"
+              <!-- <a class="dropdown-item" (click)="showEditInternHandler()"
                 >تعديل</a
-              >
+              > -->
               <a class="dropdown-item" (click)="showDeleteInternHandler()"
                 >حذف</a
               >
@@ -833,24 +833,21 @@
               <th>الرقم التسلسلي</th>
               <th>عنوان الوظيفه</th>
               <th>الوصف</th>
+              <th>سنوات الخبره</th>
+              <th>المرتب</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope="row">1001</th>
-              <td>Mark Otto</td>
-              <td>Japan</td>
+            <tr *ngFor="let item of jobs">
+              <th scope="row">{{item.id}}</th>
+              <td>{{item.name}}</td>
+              <td>{{item.description}}</td>
+              <td>{{item.experienceYears}}</td>
+              <td>{{item.salary}}</td>
+
             </tr>
-            <tr>
-              <th scope="row">1001</th>
-              <td>Mark Otto</td>
-              <td>Japan</td>
-            </tr>
-            <tr>
-              <th scope="row">1001</th>
-              <td>Mark Otto</td>
-              <td>Japan</td>
-            </tr>
+           
+          
           </tbody>
         </table>
       </div>
@@ -926,28 +923,20 @@
               <th>الرقم التسلسلي</th>
               <th>عنوان الوظيفه</th>
               <th>الوصف</th>
+              <th>سنوات الخبره</th>
               <th>حذف</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope="row">1001</th>
-              <td>Mark Otto</td>
-              <td>Japan</td>
-              <td><a href="#" class="btn btn-danger">حذف </a></td>
+            <tr *ngFor="let item of jobs">
+              <th scope="row">{{item.id}}</th>
+              <td>{{item.name}}</td>
+              <td>{{item.description}}</td>
+              <td>{{item.experienceYears}}</td>
+              <td><button class="btn btn-danger" (click)="deleteJobById(item.id)">حذف </button></td>
             </tr>
-            <tr>
-              <th scope="row">1001</th>
-              <td>Mark Otto</td>
-              <td>Japan</td>
-              <td><a href="#" class="btn btn-danger">حذف </a></td>
-            </tr>
-            <tr>
-              <th scope="row">1001</th>
-              <td>Mark Otto</td>
-              <td>Japan</td>
-              <td><a href="#" class="btn btn-danger">حذف </a></td>
-            </tr>
+          
+           
           </tbody>
         </table>
       </div>
@@ -958,17 +947,32 @@
 
         <div class="col-lg-6 d-flex align-items-center" data-aos="fade-up">
           <form
-           
+           action="#"
             class="php-email-form mt-0"
             id="scrolled_form"
+            [formGroup]="myJobForm" (ngSubmit)="onSubmitJob()"
+
           >
             <div class="row gy-3 mt-0">
               <div class="col-md-12">
                 <input
                   type="text"
-                  name="Job_Title"
+                  name="name"
                   class="form-control"
                   placeholder="عنوان الوظيفه"
+                  formControlName="name"
+                  required
+                />
+              </div>
+
+              <div class="col-md-12">
+                <input
+                  type="number"
+                  class="form-control"
+                  name="salary"
+                  placeholder="المرتب"
+                  formControlName="salary"
+
                   required
                 />
               </div>
@@ -979,10 +983,69 @@
                   class="form-control"
                   name="description"
                   placeholder=" الوصف"
+                  formControlName="description"
                   required
                 />
               </div>  
 
+             
+
+              <div class="col-md-12">
+                <input
+                  type="number"
+                  class="form-control"
+                  name="experienceYears"
+                  placeholder=" سنوات الخبره"
+                  formControlName="experienceYears"
+
+                  required
+                />
+              </div>  
+
+              <div class="col-md-12">
+                <input
+                  type="text"
+                  class="form-control"
+                  name="graduationQualifacation"
+                  placeholder=" المؤهل الدراسي"
+                  formControlName="graduationQualifacation"
+
+                  required
+                />
+              </div>  
+              <div class="col-md-12">
+                <input
+                  type="text"
+                  class="form-control"
+                  name="location"
+                  placeholder="الموقع "
+                  formControlName="location"
+
+                  required
+                />
+              </div>  
+              <!-- <h6>الوظيفه متاحه:</h6>
+              <div class="form-check mt-1">
+                  <input
+                      class="ms-2"
+                      type="radio"
+                      formControlName="status"
+                      id="flexRadioDefault1"
+                      value="true"
+                  />
+                  <label for="flexRadioDefault1">نعم</label>
+              </div>
+              <div class="form-check mt-1">
+                  <input
+                      class="ms-2"
+                      type="radio"
+                      formControlName="status"
+                      id="flexRadioDefault2"
+                      value="false"
+                  />
+                  <label for="flexRadioDefault2">لا</label>
+              </div> -->
+              
               <div class="col-md-12 text-center">
                 <button type="submit">حفظ</button>
               </div>
@@ -1006,24 +1069,14 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope="row">1001</th>
-              <td>Mark Otto</td>
-              <td>Japan</td>
-              <td>Japan</td>
+            <tr *ngFor="let item of contacts">
+              <th scope="row">{{item.name}}</th>
+              <td>{{item.email}}</td>
+              <td>{{item.subject}}</td>
+              <td>{{item.description}}</td>
             </tr>
-            <tr>
-              <th scope="row">1001</th>
-              <td>Mark Otto</td>
-              <td>Japan</td>
-              <td>Japan</td>
-            </tr>
-            <tr>
-              <th scope="row">1001</th>
-              <td>Mark Otto</td>
-              <td>Japan</td>
-              <td>Japan</td>
-            </tr>
+          
+         
           </tbody>
         </table>
       </div>
@@ -1041,24 +1094,14 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope="row">1001</th>
-              <td>Mark Otto</td>
-              <td>Japan</td>
-              <td>Japan</td>
+            <tr *ngFor="let item of coursesProblems">
+              <th scope="row">{{item.name}}</th>
+              <td>{{item.email}}</td>
+              <td>{{item.subject}}</td>
+              <td>{{item.description}}</td>
             </tr>
-            <tr>
-              <th scope="row">1001</th>
-              <td>Mark Otto</td>
-              <td>Japan</td>
-              <td>Japan</td>
-            </tr>
-            <tr>
-              <th scope="row">1001</th>
-              <td>Mark Otto</td>
-              <td>Japan</td>
-              <td>Japan</td>
-            </tr>
+          
+           
           </tbody>
         </table>
       </div>
@@ -1076,24 +1119,14 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope="row">Inten</th>
-              <td>Mark Otto</td>
-              <td>Japan</td>
-              <td>Japan</td>
+            <tr *ngFor="let item of internProblems">
+              <th scope="row">{{item.name}}</th>
+              <td>{{item.email}}</td>
+              <td>{{item.subject}}</td>
+              <td>{{item.description}}</td>
             </tr>
-            <tr>
-              <th scope="row">1001</th>
-              <td>Mark Otto</td>
-              <td>Japan</td>
-              <td>Japan</td>
-            </tr>
-            <tr>
-              <th scope="row">1001</th>
-              <td>Mark Otto</td>
-              <td>Japan</td>
-              <td>Japan</td>
-            </tr>
+          
+          
           </tbody>
         </table>
       </div>
@@ -1229,24 +1262,9 @@
               <td>{{cor.price}}</td>
               <td>{{cor.duration}}</td>
               <td>{{cor.trainerName}}</td>
-              <td><a href="#" class="btn btn-danger">حذف </a></td>
+              <td><button class="btn btn-danger" (click)="deleteCourseById(cor.id)">حذف </button></td>
             </tr>
-            <!-- <tr>
-              <th scope="row">1001</th>
-              <td>Mark Otto</td>
-              <td>Japan</td>
-              <td>Japan</td>
-              <td>Html</td>
-              <td><a href="#" class="btn btn-danger">حذف </a></td>
-            </tr> -->
-            <!-- <tr>
-              <th scope="row">1001</th>
-              <td>Mark Otto</td>
-              <td>Japan</td>
-              <td>Japan</td>
-              <td>Html</td>
-              <td><a href="#" class="btn btn-danger">حذف </a></td>
-            </tr> -->
+        
           </tbody>
         </table>
       </div>

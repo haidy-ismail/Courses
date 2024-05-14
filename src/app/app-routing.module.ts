@@ -49,9 +49,11 @@ import { AidComponent } from './components/InterConstructionCentre/Courses/about
 import { SpaceDiplomaComponent } from './components/InterConstructionCentre/Courses/about-course/space-diploma/space-diploma.component';
 import { DashBoardComponent } from './components/dash-board/dash-board.component';
 import { authGuard } from './gaurds/auth.guard';
+import { GuidMemComponent } from './components/membership/guid-mem/guid-mem.component';
 
 
 const routes: Routes = [
+  { path: '', component: MainComponent },
   {path:'home',component:MainComponent},
   {path:'contact',component:ContactComponent},
   {path:'jobs',component:JobsComponent},
@@ -99,6 +101,7 @@ const routes: Routes = [
   {path:'icdl',component:IcdlComponent},
   {path:'aid',component:AidComponent},
   {path:'spaceDiploma',component:SpaceDiplomaComponent},
+  {path:'guideMem',component:GuidMemComponent},
   {path: 'dashboard', component: DashBoardComponent, canActivate: [authGuard]},
   {path:'**',component:MainComponent}
   

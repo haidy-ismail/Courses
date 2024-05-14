@@ -7,6 +7,10 @@ import { TrainingsService } from 'src/app/services/trainings.service';
 import { NewsService } from 'src/app/services/news.service';
 import { MagazineService } from 'src/app/services/magazine.service';
 import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
+import { JobsService } from 'src/app/services/jobs.service';
+import { ContactService } from 'src/app/services/contact.service';
+import { CourseProblemsService } from 'src/app/services/course-problems.service';
+import { InternProblemsService } from 'src/app/services/intern-problems.service';
 
 @Component({
   selector: 'app-control-pannel',
@@ -18,6 +22,10 @@ export class ControlPannelComponent implements OnInit {
   trainings: any[] = [];
   news: any[] = [];
   magazines: any[] = [];
+  jobs :any[] = [];
+  contacts :any[] =[];
+  coursesProblems :any[] = [];
+  internProblems :any[] = [];
   myForm: FormGroup ;
   myMagazineForm:FormGroup;
   data: any[] = [];
@@ -25,6 +33,8 @@ export class ControlPannelComponent implements OnInit {
   currentNewsId: number = 0;
   isEditing = false;
   myCoursesForm:FormGroup;
+  myJobForm:FormGroup;
+
 
 
 
@@ -37,6 +47,10 @@ export class ControlPannelComponent implements OnInit {
     private newsService: NewsService,
     private magazinesService: MagazineService,
     private fb: FormBuilder,
+    private jobService:JobsService,
+    private contactService:ContactService,
+    private courseProblemsService :CourseProblemsService,
+    private internProblemService :InternProblemsService
 
   ) {
 
@@ -59,16 +73,44 @@ this.myCoursesForm = this.fb.group({
   duration:['', Validators.required],
   trainerName:['', Validators.required]
 
-})
+});
 
-  }
+this.myJobForm = this.fb.group({
+  name:['', Validators.required],
+  salary: ['', Validators.required],
+  description:['', Validators.required],
+  status:true,
+  experienceYears:['', Validators.required],
+  graduationQualifacation:['', Validators.required],
+  location:['', Validators.required]
+});
+
+ }
 
   ngOnInit(): void {
     this.getCourses();
     this.getTrainings();
     this.getAllMagazines();
     this.getAllnews();
+    this.getAllJobs();
+    this.getAllContact();
+    this.getAllCourseProblems();
+    this.getAllInternProblems();
   }
+
+
+  getAllCourseProblems(){
+    this.courseProblemsService.getAllCourseProblems().subscribe((res:any)=>{
+      this.coursesProblems = res
+    })
+  }
+
+  getAllInternProblems(){
+    this.internProblemService.getAllInternProblems().subscribe((res:any)=>{
+      this.internProblems = res
+    })
+  }
+
 
 
   // News CRUD
@@ -87,6 +129,7 @@ this.myCoursesForm = this.fb.group({
           () => {
             alert('News item added successfully')
               console.log('News item added successfully');
+              this.myForm.reset();
               // Optionally, refresh the news list or navigate back to the list
               this.getAllnews(); // Function to refresh the news list
           },
@@ -291,6 +334,71 @@ deleteMagazineById(id: number) {
   // End Courses CRUD
 
 
+//JOBs CRUD 
+getAllJobs(){
+  this.jobService.getAllJobs().subscribe((res:any)=>{
+    this.jobs = res
+  })
+}
+
+
+deleteJobById(id: number) {
+  const confirmed = window.confirm('Are you sure you want to delete this record?');
+    
+  // If the user confirmed the deletion
+  if (confirmed) {
+      // Proceed with deletion
+      this.jobService.deleteJobById(id).subscribe(
+          () => {
+              console.log('Record deleted successfully');
+              // Refresh data after successful deletion
+              this.getAllJobs();
+          },
+          error => {
+              console.error('Error deleting record:', error);
+          }
+      );
+  } else {
+      // User canceled the deletion
+      console.log('Deletion canceled');
+  }
+}
+
+
+onSubmitJob() {
+  if (this.myJobForm.valid) {
+    const newJobItem = this.myJobForm.value;
+    this.jobService.postJob(newJobItem).subscribe(
+        () => {
+          alert('Job item added successfully')
+            console.log('Job item added successfully');
+            console.log('Form data:', this.myJobForm);
+            this.myJobForm.reset();
+            // Optionally, refresh the news list or navigate back to the list
+            this.getAllJobs();
+             // Function to refresh the news list
+        },
+        error => {
+            console.error('Error adding job item:', error);
+            console.log('Form data:', this.myJobForm);
+
+        }
+    );
+} else {
+    console.error('Form is invalid');
+}
+}
+
+
+
+
+
+
+// End CTRUD
+
+
+
+
   getTrainings() {
     this.trainingsService.getAllTrainings().subscribe((res: any) => {
       this.trainings = res;
@@ -298,7 +406,13 @@ deleteMagazineById(id: number) {
   }
 
 
+//Contact Us
 
+getAllContact(){
+  this.contactService.getAllJobs().subscribe((res:any)=>{
+    this.contacts = res
+  })
+}
 
 
  

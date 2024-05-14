@@ -9,11 +9,14 @@ export class NewsService {
 
   constructor(private http:HttpClient) { }
 
-  private apiURL = 'https://localhost:7125/api/News/addNews'
-  private basicURL = 'https://localhost:7125/api/News'
+  // private apiURL = 'https://localhost:7125/api/News/addNews'
+  private apiURL = 'https://localhost:7125/api/Newsss/addNews'
+  // private basicURL = 'https://localhost:7125/api/News'
+  private basicURL = 'https://localhost:7125/api/Newsss'
+
 
   getAllNews(){
-    return this.http.get('https://localhost:7125/api/News/getAllNews')
+    return this.http.get('https://localhost:7125/api/Newsss')
 
   }
 
