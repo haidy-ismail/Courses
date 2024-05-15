@@ -58,7 +58,6 @@ import { DashBoardComponent } from './components/dash-board/dash-board.component
 import { TokenInterceptor } from './interceptors/token.interceptor';
 import { ProblemsComponent } from './components/InterConstructionCentre/Courses/problems/problems.component';
 import { ApplyJobComponent } from './components/jobs/apply-job/apply-job.component';
-import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 
 @NgModule({
   declarations: [
@@ -139,7 +138,6 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
     NgToastModule,
     FormsModule,
     ReactiveFormsModule,
-    BsDatepickerModule.forRoot()
 
   ],
   providers: [{

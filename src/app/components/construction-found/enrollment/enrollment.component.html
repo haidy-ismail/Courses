@@ -3,9 +3,10 @@
     <div class="row justify-content-between gy-4">
       <div class="col-lg-6 d-flex align-items-center" data-aos="fade-up">
         <form
-          (ngSubmit)="submitForm()"
+          (ngSubmit)="onSubmit()"
           class="php-email-form"
           id="scrolled_form"
+          [formGroup]="conForm"
         >
           <h3>تقديم طلب</h3>
           <div class="row gy-3">
@@ -13,8 +14,9 @@
               <input
                 type="text"
                 name="name"
+                id="name"
                 class="form-control"
-                [(ngModel)]="formData.name"
+               formControlName="name"
                 placeholder="اسم المتطوع"
                 required
               />
@@ -25,7 +27,8 @@
                 type="email"
                 class="form-control"
                 name="email"
-                [(ngModel)]="formData.email"
+                id="email"
+                formControlName="email"
                 placeholder="البريد الالكتروني"
                 required
               />
@@ -35,8 +38,9 @@
               <input
                 type="text"
                 class="form-control"
-                name="phone"
-                [(ngModel)]="formData.phoneNumber"
+                name="phoneNumber"
+                id="phoneNumber"
+                formControlName="phoneNumber"
                 placeholder="رقم الهاتف"
                 required
               />
@@ -46,8 +50,9 @@
               <input
                 type="text"
                 name="qualification"
+                id="qualification"
                 class="form-control"
-                [(ngModel)]="formData.qualification"
+                formControlName="qualification"
                 placeholder="المؤهل الدراسي"
                 required
               />
@@ -57,8 +62,9 @@
               <input
                 type="text"
                 name="currentJob"
+                id="currentJob"
                 class="form-control"
-                [(ngModel)]="formData.currentJob"
+                formControlName="currentJob"
                 placeholder=" الوظيفة الحالية"
                 required
               />
@@ -68,8 +74,9 @@
               <input
                 type="text"
                 name="country"
+                id="country"
                 class="form-control"
-                [(ngModel)]="formData.country"
+                formControlName="country"
                 placeholder="المحافظة"
                 required
               />
@@ -79,8 +86,9 @@
               <input
                 type="text"
                 name="city"
+                id="city"
                 class="form-control"
-                [(ngModel)]="formData.city"
+                formControlName="city"
                 placeholder="المدينة"
                 required
               />
@@ -88,7 +96,7 @@
 
             <div class="col-md-12">
               <input type="text" name="postalCode"
-              class="form-control" [(ngModel)]="formData.postalCode"
+              class="form-control" id="postalCode" formControlName="postalCode"
               placeholder=" الرمز البريدي" required />
             </div>
 
@@ -96,7 +104,9 @@
               <select
                 class="form-select"
                 aria-label="Default select example"
-                [(ngModel)]="formData.volunteeringWorkHaveInterestIn"
+                formControlName="volunteeringWorkHaveInterestIn"
+                name="volunteeringWorkHaveInterestIn"
+                id="volunteeringWorkHaveInterestIn"
               >
                 <option selected disabled>عمل طوعي معين يثير اهتمامك؟</option>
                 <option value="هل هناك افضلية لعمل معين">
@@ -123,8 +133,9 @@
               <select
                 class="form-select"
                 aria-label="Default select example"
-                
-                [(ngModel)]="formData.someOneBenefitToWorkWith"
+                id="someOneBenefitToWorkWith"
+               formControlName="someOneBenefitToWorkWith"
+                name="someOneBenefitToWorkWith"
               >
                 <option selected disabled>
                   هل هناك مستفيد (زبون) او مجموعة مستفيدين تفضل العمل معها ؟
@@ -148,7 +159,9 @@
               <select
                 class="form-select"
                 aria-label="Default select example"
-                [(ngModel)]="formData.groupYouNotBoredof"
+                id="groupYouNotBoredof"
+                formControlName="groupYouNotBoredof"
+                name="groupYouNotBoredof"
               >
                 <option selected disabled>
                   هل هناك مجموعة لا تشعر بالميل للعمل معها ؟
@@ -162,7 +175,9 @@
               <select
                 class="form-select"
                 aria-label="Default select example"
-                [(ngModel)]="formData.volunteeringTime"
+                formControlName="volunteeringTime"
+                id="volunteeringTime"
+                name="volunteeringTime"
               >
                 <option selected disabled>
                   ما هي الاوقات التي تفضل العمل التطوعي فيها ؟
@@ -185,7 +200,9 @@
               <select
                 class="form-select"
                 aria-label="Default select example"
-                [(ngModel)]="formData.geographicalAdvantageInVolunteerWork"
+                formControlName="geographicalAdvantageInVolunteerWork"
+                name="geographicalAdvantageInVolunteerWork"
+                id="geographicalAdvantageInVolunteerWork"
               >
                 <option selected disabled>
                   هل عندك افضلية جغرافية في العمل التطوعي ؟
@@ -200,7 +217,9 @@
               <select
                 class="form-select"
                 aria-label="Default select example"
-                [(ngModel)]="formData.haveCarForVolunteering"
+                formControlName="haveCarForVolunteering"
+                name="haveCarForVolunteering"
+                id="haveCarForVolunteering"
               >
                 <option selected disabled>
                   هل لديك سيارة بامكانك استخدامها في العمل التطوعي ؟
@@ -215,7 +234,9 @@
               <select
                 class="form-select"
                 aria-label="Default select example"
-                [(ngModel)]="formData.knowAboutUs"
+                formControlName="knowAboutUs"
+                name="knowAboutUs"
+                id="knowAboutUs"
               >
                 <option selected disabled>
                   مصادر معرفتك بنا , كيف سمعت عنا ؟
@@ -236,9 +257,10 @@
             <div class="col-md-6">
               <input
                 type="text"
-                name="preson1"
+                name="person1"
+                id="person1"
                 class="form-control"
-                [(ngModel)]="formData.preson1"
+               formControlName="person1"
                 placeholder="الاسم"
                 required
               />
@@ -247,9 +269,10 @@
             <div class="col-md-6">
               <input
                 type="text"
-                name="preson2"
+                name="person2"
+                id="person2"
                 class="form-control"
-                [(ngModel)]="formData.preson2"
+                formControlName="person2"
                 placeholder="الاسم"
                 required
               />
