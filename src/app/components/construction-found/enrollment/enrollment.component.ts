@@ -1,5 +1,9 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { NgToastService } from 'ng-angular-popup';
+import { ApiServiceService } from 'src/app/services/api-service.service';
+import { environment } from 'src/environments/environment.development';
 
 @Component({
   selector: 'app-enrollment',
@@ -8,6 +12,7 @@ import { Component } from '@angular/core';
 })
 export class EnrollmentComponent {
 
+  private apiUrl: string = environment.apiUrl;
   formData: any = {};
 
   // VolunteeringOption: string[] = ['BMW', 'Audi'];
@@ -18,58 +23,67 @@ export class EnrollmentComponent {
     { id: 2, name: "Minor" },
     { id: 3, name: "High" },
   ];
-  // selectedVolunteeringOption: string = '';
-  // selectsomeOneBenefitToWorkWith: string ='';
-  // selectgroupYouNotBoredof: string = '';
 
-  // selectvolunteeringTime: string='';
-  // selectgeographicalAdvantageInVolunteerWork: string = '';
-  // selecthaveCarForVolunteering: string ='';
-  // selectknowAboutUs: string='';
+  conForm!: FormGroup;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient,
+    private fb: FormBuilder,
+    private construction: ApiServiceService,
+    private formBuilder:FormBuilder,
+    private toast: NgToastService,
+  ) {
 
-  submitForm(): void {
-    // this.formData = {
-    //   name: this.formData.name,
-    //   email: this.formData.email,
-    //   phoneNumber: this.formData.phoneNumber,
-    //   qualification: this.formData.qualification,
-    //   currentJob: this.formData.currentJob,
-    //   country: this.formData.country,
-    //   city: this.formData.city,
-    //   postalCode: this.formData.postalCode,
-    //   someOneBenefitToWorkWith: this.selectsomeOneBenefitToWorkWith,
-    //   groupYouNotBoredof: this.selectgroupYouNotBoredof,
-    //   volunteeringTime: this.selectvolunteeringTime,
-    //   geographicalAdvantageInVolunteerWork: this.selectgeographicalAdvantageInVolunteerWork,
-    //   haveCarForVolunteering: this.selecthaveCarForVolunteering,
-    //   knowAboutUs: this.selectknowAboutUs,
-    //   preson1: this.formData.preson1,
-    //   preson2: this.formData.preson2
-    // };
+    
+    this.conForm = this.formBuilder.group({
+      name: ['', Validators.required],
+      email: ['', Validators.required],
+      phoneNumber: ['', Validators.required],
+      qualification: ['', Validators.required],
+      currentJob: ['', Validators.required],
+      country: ['', Validators.required],
+      city: ['', Validators.required],
+      postalCode: ['', Validators.required],
+      volunteeringWorkHaveInterestIn: ['', Validators.required],
+      someOneBenefitToWorkWith: ['', Validators.required],
+      groupYouNotBoredof: ['', Validators.required],
+      volunteeringTime: ['', Validators.required],
+      geographicalAdvantageInVolunteerWork: ['', Validators.required],
+      haveCarForVolunteering: ['', Validators.required],
+      knowAboutUs: ['', Validators.required],
+      person1: ['', Validators.required],
+      person2: ['', Validators.required],
 
-    // Send form data to API
-    this.http.post('https://localhost:7125/api/ConstructionFound/createConstructionOfEnrollment', this.formData)
-      .subscribe(response => {
-        console.log('Form submitted successfully:', response);
-        alert("Send successfully");
-        // Optionally, reset the form after successful submission
-        this.resetForm();
-      }, error => {
-        console.error('Error submitting form:', error);
-      });
+    });
   }
 
-  resetForm(): void {
-    // Clear form data
-    this.formData = {};
-    // this.selectsomeOneBenefitToWorkWith = '';
-    // this.selectgroupYouNotBoredof = '';
-    // this.selectvolunteeringTime = '';
-    // this.selectgeographicalAdvantageInVolunteerWork = '';
-    // this.selecthaveCarForVolunteering = '';
-    // this.selectknowAboutUs = '';
+
+
+  onSubmit() {
+    
+    if(this.conForm.valid){
+      console.log(this.conForm.value)
+      this.construction.addConstructionFound(this.conForm.value)
+        .subscribe(
+          (response) => {
+            console.log(response);
+            console.log('Construction found request added successfully:', response);
+            this.toast.success({detail:"SUCCESS",summary: response.message, duration: 5000});
+
+            // Optionally, reset the form after successful submission
+            // this.conForm.reset();
+    },
+    (error) => {
+      this.toast.error({detail:"ERROR",summary: "Something went wrong", duration: 5000});
+
+      console.error('Error adding construction found request:', error);
+      // Handle error, e.g., show an error message to the user
+    }
+  );
+} 
+  }
   }
 
-}
+
+  
+
+
