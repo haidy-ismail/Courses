@@ -57,6 +57,8 @@ import { NgToastModule } from 'ng-angular-popup';
 import { DashBoardComponent } from './components/dash-board/dash-board.component';
 import { TokenInterceptor } from './interceptors/token.interceptor';
 import { ProblemsComponent } from './components/InterConstructionCentre/Courses/problems/problems.component';
+import { ApplyJobComponent } from './components/jobs/apply-job/apply-job.component';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 
 @NgModule({
   declarations: [
@@ -122,7 +124,9 @@ import { ProblemsComponent } from './components/InterConstructionCentre/Courses/
     ApplyMemComponent,
     GuidMemComponent,
     DashBoardComponent,
-    ProblemsComponent
+    ProblemsComponent,
+    ApplyJobComponent,
+
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   
@@ -134,7 +138,9 @@ import { ProblemsComponent } from './components/InterConstructionCentre/Courses/
     HttpClientModule,
     NgToastModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BsDatepickerModule.forRoot()
+
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
