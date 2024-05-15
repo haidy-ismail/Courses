@@ -16,7 +16,7 @@ export class ApiServiceService {
     return this.http.get<any>(this.baseUrl);
   }
 
-  addConstructionFound(con: any) {
+  addConstructionFound(con: any): Observable<any> {
     console.log(con);
     // return this.http.post<any>(`${this.apiUrl + 'ConstructionFound/createConstructionOfEnrollment'}`, con);
     // return this.http.post<any>('https://localhost:7125/api/ConstructionFound/getAllApplications', con);
