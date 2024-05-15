@@ -6,17 +6,7 @@
     <div class="content">
       <form action="#" [formGroup]="loginForm">
         <div class="user-details">
-          <!-- <div class="input-box">
-            <span class="details">البريد الالكتروني</span>
-            <input type="text" placeholder="البريد الالكتروني" required>
-          </div>
-         
-          <div class="input-box">
-            <span class="details">كلمة المرور</span>
-           
-            <input type="text" placeholder="كلمة المرور" required>
-            <i  class="bi bi-eye-slash"></i>
-          </div> -->
+       
 
           <div class="input-box">
             <label class="details">البريد الالكتروني</label>
@@ -35,13 +25,11 @@
         </div>
 
         <div class="form-inlline fr mt-4">
-          <a id="forget" class="font-weight-bold">نسيت كلمة المرور؟</a>
+          <a id="forget" class="font-weight-bold" routerLink="/registration">ليس لدي حساب ؟</a>
 
         </div>
         
-        <!-- <div class="button"  >
-          <input [disabled]="loginForm.invalid"  type="submit" value="تسجيل">
-        </div> -->
+    
 
         <button (click)="OnLogIn()" type="submit" class="button">تسجيل</button>
       </form>

@@ -1,5 +1,6 @@
 import { Component, OnInit, HostListener, ElementRef, ViewChild } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -11,7 +12,7 @@ export class HeaderComponent implements OnInit{
 
   isMobileNavOpen: boolean = false;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private authService: AuthService) {}
 
   ngOnInit(): void {
     this.updateActiveNavLinks();
@@ -24,6 +25,13 @@ export class HeaderComponent implements OnInit{
     });
   }
 
+  isLoggedIn(){
+    return this.authService.isLoggedIn();
+  }
+  logout = () => {
+    this.authService.singOut();
+    this.router.navigate(['login']);
+  }
   @HostListener('window:scroll')
   onWindowScroll(): void {
     // Update active navbar links on window scroll
@@ -105,14 +113,7 @@ export class HeaderComponent implements OnInit{
     this.scrollToElement(hash);
   }
 
-  // toggleDropdown(event: MouseEvent) {
-  //   event.preventDefault();
-  //   const target = event.currentTarget as HTMLElement;
-  //   const dropdown = target.nextElementSibling;
-  //   if (dropdown !== null) {
-  //     dropdown.classList.toggle('dropdown-active');
-  //   }
-  // }
+  
   
 
 }
