@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http'
 import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { environment } from 'src/environments/environment.development';
 
 
 @Injectable({
@@ -9,18 +10,19 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 })
 export class AuthService {
 
-  private baseUrl: string ="https://localhost:7125/api/User/";
+  private apiUrl : string = environment.apiUrl;
+  // private baseUrl: string ="https://localhost:7125/api/User/";
   private userPayload: any;
   constructor(private http : HttpClient, private router: Router) { 
      this.userPayload = this.decodedToken();
   }
 
   signUp(userObj:any){
-    return this.http.post<any>(`${this.baseUrl}register`, userObj)
+    return this.http.post<any>(`${this.apiUrl +'User'}/register`, userObj)
   }
 
   logIn(logInObj:any){
-    return this.http.post<any>(`${this.baseUrl}authenticate`,logInObj)
+    return this.http.post<any>(`${this.apiUrl +'User'}/authenticate`,logInObj)
   }
  
   singOut(){

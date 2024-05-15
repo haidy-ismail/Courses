@@ -63,8 +63,19 @@
           <li><a class="nav-link scrollto" routerLink="contact">أتصل بنا</a></li>
           <li><a class="nav-link scrollto" routerLink="controll"> لوحة التحكم</a></li>
 
-          
-          <li><a class="getstarted scrollto" routerLink="registration">تـسجيل الـدخول</a></li>
+          <div *ngIf="isLoggedIn(); then loggedInTemplate else loggedOutTemplate"></div>
+          <ng-template #loggedInTemplate >
+            <div class="navbar-nav py-0" (click)="logout()">
+              <li><a class="getstarted scrollto" routerLink="registration" >تـسجيل الخروج</a></li>
+
+             
+          </div>
+          </ng-template>
+          <ng-template #loggedOutTemplate >
+            <li><a class="getstarted scrollto" routerLink="login">تـسجيل الـدخول</a></li>
+
+          </ng-template>
+          <!-- <li><a class="getstarted scrollto" routerLink="registration">تـسجيل الـدخول</a></li> -->
         </ul>
         <i class="bi bi-list mobile-nav-toggle" (click)="toggleMobileNav()"></i>
       </nav>

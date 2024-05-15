@@ -49,7 +49,7 @@ export class LogInComponent implements OnInit {
           this.userStore.setRoleForStore(tokenPayload.role);
           this.toast.success({detail:"SUCCESS",summary: res.message, duration: 5000});
           if(tokenPayload.role ==='Admin')
-            this.router.navigate(['dashboard']);
+            this.router.navigate(['controll']);
           else{this.router.navigate(['home'])}
           
         },

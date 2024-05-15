@@ -97,14 +97,15 @@ const routes: Routes = [
   {path:'space',component:SpaceComponent},
   {path:'summer',component:SummerTraningComponent},
   {path:'tech',component:TechnicalComponent},
-  {path:'controll',component:ControlPannelComponent},
-  {path:'dash',component:DashboardComponent},
+  {path:'controll',component:ControlPannelComponent, canActivate: [authGuard]},
+  // {path:'dash',component:DashboardComponent},
   {path:'icdl',component:IcdlComponent},
   {path:'aid',component:AidComponent},
   {path:'spaceDiploma',component:SpaceDiplomaComponent},
   {path:'guideMem',component:GuidMemComponent},
   {path:'applyJob',component:ApplyJobComponent},
   {path: 'dashboard', component: DashBoardComponent, canActivate: [authGuard]},
+  // {path: 'dashboard', component: DashBoardComponent, canActivate: [authGuard]},
   {path:'**',component:MainComponent}
   
 

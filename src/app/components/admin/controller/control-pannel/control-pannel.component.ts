@@ -144,6 +144,9 @@ this.myJobForm = this.fb.group({
 
 
 
+
+
+
 deletenewsById(id: number) {
   const confirmed = window.confirm('Are you sure you want to delete this record?');
     
