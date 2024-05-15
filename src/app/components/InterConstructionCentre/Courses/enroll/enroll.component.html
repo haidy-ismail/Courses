@@ -4,8 +4,8 @@
       <div class="row justify-content-between gy-4">
         <div class="col-lg-6 d-flex align-items-center" data-aos="fade-up">
           <form
-            action="forms/quote.php"
-            method="post"
+          [formGroup]="myCourseApplicantForm"
+          (ngSubmit)="onSubmitCourseApplicant()"
             class="php-email-form"
             id="scrolled_form"
           >
@@ -17,6 +17,8 @@
                   name="name"
                   class="form-control"
                   placeholder="الاسم"
+                  formControlName="name"
+
                   required
                 />
               </div>
@@ -27,6 +29,8 @@
                   class="form-control"
                   name="email"
                   placeholder="البريد الالكتروني"
+                  formControlName="email"
+
                   required
                 />
               </div>
@@ -37,6 +41,8 @@
                   class="form-control"
                   name="phone"
                   placeholder="رقم الهاتف"
+                  formControlName="phoneNumber"
+
                   required
                 />
               </div>
@@ -47,6 +53,8 @@
                   name="name"
                   class="form-control"
                   placeholder="المؤهل الدراسي"
+                  formControlName="educationalQualification"
+
                   required
                 />
               </div>
@@ -54,7 +62,8 @@
           
   
               <div class="col-md-12">
-                <select class="form-select" aria-label="Default select example">
+                <select class="form-select" aria-label="Default select example"  formControlName="courseName"
+                >
                   <option selected disabled>
                     الكورس او الدبلومه المراد حجزه/ها ؟
                   </option>
@@ -83,11 +92,7 @@
   
             
               <div class="col-md-12 text-center">
-                <div class="loading">Loading</div>
-                <div class="error-message"></div>
-                <div class="sent-message">
-                  Your quote request has been sent successfully. Thank you!
-                </div>
+               
   
                 <button type="submit">تقديم</button>
               </div>

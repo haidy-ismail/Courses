@@ -311,7 +311,44 @@
               بالمؤسسة
             </a>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-              <a class="dropdown-item" (click)="showMembershipListHandler()"
+              <a class="dropdown-item" (click)="showEnrollAlbnaaHandler()"
+                >عرض</a
+              >
+            </div>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="dropdownMenuLink"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="feather feather-users align-text-bottom"
+                aria-hidden="true"
+              >
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                <circle cx="9" cy="7" r="4"></circle>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+              </svg>
+              
+              طلبات تقديم<br> الوظائف
+            </a>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+              <a class="dropdown-item" (click)="showJobApplicantHandler()"
                 >عرض</a
               >
             </div>
@@ -442,46 +479,39 @@
 
       <!-- //طلبات الالتحاق بالمؤسسة -->
 
-      <div class="table-responsive">
+      <div *ngIf="showJobApplicant" class="table-responsive">
         <table class="table table-striped table-sm">
           <thead>
             <tr>
               <th>الرقم التسلسلي</th>
               <th>الاسم</th>
-              <th>البريد الالكتروني</th>
               <th>الهاتف</th>
-              <th>المؤهل الدراسي</th>
-              <th>الوظيفه الحالية</th>
-              <th>المحافظة</th>
-              <th>المدينة</th>
-              <th>الرمز البريدي</th>
-              <th>الاختيار1</th>
-              <th>الاختيار2</th>
-              <th>الاختيار3</th>
-              <th>الاختيار4</th>
-              <th>الاختيار5</th>
-              <th>الاختيار6</th>
-              <th>الاختيار7</th>
-              <!-- <th>عمل طوعي معين يثير اهتمامك؟</th>
-              <th>
-                هل هناك مستفيد (زبون) او مجموعة مستفيدين تفضل العمل معها ؟
-              </th>
-              <th>هل هناك مجموعة لا تشعر بالميل للعمل معها ؟</th>
-              <th>ما هي الاوقات التي تفضل العمل التطوعي فيها ؟</th>
-              <th>هل عندك افضلية جغرافية في العمل التطوعي ؟</th>
-              <th>هل لديك سيارة بامكانك استخدامها في العمل التطوعي ؟</th>
-              <th>مصادر معرفتك بنا , كيف سمعت عنا ؟</th> -->
-              <th>الشخص الاول المعرفه</th>
-              <th>الشخص الثاني</th>
+              <th> تاريخ الميلاد</th>
+              <th> العنوان</th>
+              <th>سنه التخرج</th>
+              <th>النوع</th>
+              <th>الجامعه</th>
+              <th>الكليه</th>
+              <th>السيره الذاتية</th>
+             
+              
             </tr>
           </thead>
           <tbody>
-            <!-- <tr >
+            <tr *ngFor="let item of jobApplicant">
               <th scope="row">{{item.id}}</th>
-              <td>{{item.title}}</td>
-              <td>{{item.description}}</td>
-              <td>{{item.imageUrl}}</td>
-            </tr> -->
+              <td>{{item.name}}</td>
+              <td>{{item.phoneNumber}}</td>
+              <td>{{item.dateOfBirth}}</td>
+              <td>{{item.address}}</td>
+              <td>{{item.graduationYear}}</td>
+              <td>{{item.gender}}</td>
+              <td>{{item.university}}</td>
+              <td>{{item.faculty}}</td>
+              <td>{{item.applicantCv}}</td>
+
+
+            </tr>
             <!-- <tr>
               <th scope="row">1001</th>
               <td>Mark Otto</td>

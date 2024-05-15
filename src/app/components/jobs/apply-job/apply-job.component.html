@@ -4,8 +4,7 @@
       <div class="row justify-content-between gy-4">
         <div class="col-lg-6 d-flex align-items-center" data-aos="fade-up">
           <form
-            action="forms/quote.php"
-            method="post"
+          (ngSubmit)="submitForm()"
             class="php-email-form"
             id="scrolled_form"
           >
@@ -16,6 +15,7 @@
                   type="text"
                   name="name"
                   class="form-control"
+                  [(ngModel)]="formData.name"
                   placeholder="الاسم"
                   required
                 />
@@ -26,6 +26,7 @@
                   type="text"
                   class="form-control"
                   name="address"
+                  [(ngModel)]="formData.address"
                   placeholder=" العنوان"
                   required
                 />
@@ -36,6 +37,7 @@
                   type="text"
                   class="form-control"
                   name="phone"
+                  [(ngModel)]="formData.phoneNumber"
                   placeholder="رقم الهاتف"
                   required
                 />
@@ -43,8 +45,9 @@
 
               <div class="col-md-12">
                 <label for="yearPicker" class="form-label">سنه الميلاد </label>
-                <input type="number" class="form-control" id="yearPicker" placeholder="YYYY" min="1900" max="2100" step="1">
-              </div>
+                <input type="text" class="form-control" id="yearPicker" placeholder="DD MMM YYYY" appFormatDateInput [(ngModel)]="formData.dateOfBirth">
+            </div>
+            
               
 
               <h6>النوع:</h6>
@@ -66,6 +69,7 @@
                   type="text"
                   class="form-control"
                   name="university"
+                  [(ngModel)]="formData.university"
                   placeholder=" الجامعه"
                   required
                 />
@@ -76,6 +80,8 @@
                   type="text"
                   class="form-control"
                   name="faculty"
+                  [(ngModel)]="formData.faculty"
+
                   placeholder=" الكليه"
                   required
                 />
@@ -83,13 +89,18 @@
 
               <div class="col-md-12">
                 <label for="yearPicker" class="form-label">سنه التخرج</label>
-                <input type="number" class="form-control" id="yearPicker" placeholder="YYYY" min="1900" max="2100" step="1">
+                <input type="text" class="form-control" id="yearPicker"placeholder="DD MMM YYYY" appFormatDateInput [(ngModel)]="formData.graduationYear"
+                >
               </div>
+
+              
+            
 
   
               <div class="mb-3">
                 <label for="formFile" class="form-label">السيره الذاتية</label>
-                <input class="form-control" type="file" id="formFile">
+                <input class="form-control" type="file" id="formFile" [(ngModel)]="formData.cv"
+                >
               </div>
   
           

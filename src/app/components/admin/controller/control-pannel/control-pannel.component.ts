@@ -11,6 +11,8 @@ import { JobsService } from 'src/app/services/jobs.service';
 import { ContactService } from 'src/app/services/contact.service';
 import { CourseProblemsService } from 'src/app/services/course-problems.service';
 import { InternProblemsService } from 'src/app/services/intern-problems.service';
+import { JobApplicantService } from 'src/app/services/job-applicant.service';
+import { CourseApplicantService } from 'src/app/services/course-applicant.service';
 
 @Component({
   selector: 'app-control-pannel',
@@ -26,6 +28,8 @@ export class ControlPannelComponent implements OnInit {
   contacts :any[] =[];
   coursesProblems :any[] = [];
   internProblems :any[] = [];
+  jobApplicant:any[] = [];
+  courseApplicant:any[] = [];
   myForm: FormGroup ;
   myMagazineForm:FormGroup;
   data: any[] = [];
@@ -50,7 +54,9 @@ export class ControlPannelComponent implements OnInit {
     private jobService:JobsService,
     private contactService:ContactService,
     private courseProblemsService :CourseProblemsService,
-    private internProblemService :InternProblemsService
+    private internProblemService :InternProblemsService,
+    private jobApplicantService :JobApplicantService,
+    private courseApplicantService : CourseApplicantService
 
   ) {
 
@@ -85,6 +91,8 @@ this.myJobForm = this.fb.group({
   location:['', Validators.required]
 });
 
+
+
  }
 
   ngOnInit(): void {
@@ -96,8 +104,16 @@ this.myJobForm = this.fb.group({
     this.getAllContact();
     this.getAllCourseProblems();
     this.getAllInternProblems();
+    this.getAllJobApplicant();
+    this.getAllCourseApplicant();
   }
 
+
+  getAllCourseApplicant(){
+    this.courseApplicantService.getAllCoursepplicant().subscribe((res:any)=>{
+      this.courseApplicant = res
+    })
+  }
 
   getAllCourseProblems(){
     this.courseProblemsService.getAllCourseProblems().subscribe((res:any)=>{
@@ -108,6 +124,12 @@ this.myJobForm = this.fb.group({
   getAllInternProblems(){
     this.internProblemService.getAllInternProblems().subscribe((res:any)=>{
       this.internProblems = res
+    })
+  }
+
+  getAllJobApplicant(){
+    this.jobApplicantService.getAllJobApplicant().subscribe((res:any)=>{
+      this.jobApplicant = res;
     })
   }
 
@@ -501,6 +523,9 @@ getAllContact(){
   showAddIntern = false;
   showDeleteIntern = false;
 
+  showEnrollAlbnaa = false;
+  showJobApplicant = false;
+
   showNewsListHandler(): void {
     this.showNewsList = true;
     this.showAddNews = false;
@@ -526,6 +551,10 @@ getAllContact(){
     this.showEditIntern = false;
     this.showAddIntern = false;
     this.showDeleteIntern = false;
+    this.showEnrollAlbnaa = false;
+    this.showJobApplicant = false;
+
+
   }
 
   showAddNewsHandler(): void {
@@ -553,6 +582,10 @@ getAllContact(){
     this.showEditIntern = false;
     this.showAddIntern = false;
     this.showDeleteIntern = false;
+    this.showEnrollAlbnaa = false;
+    this.showJobApplicant = false;
+
+
   }
 
   showEditNewsHandler(): void {
@@ -580,6 +613,10 @@ getAllContact(){
     this.showEditIntern = false;
     this.showAddIntern = false;
     this.showDeleteIntern = false;
+    this.showEnrollAlbnaa = false;
+    this.showJobApplicant = false;
+
+
   }
 
   showDeleteNewsHandler(): void {
@@ -607,6 +644,10 @@ getAllContact(){
     this.showEditIntern = false;
     this.showAddIntern = false;
     this.showDeleteIntern = false;
+    this.showEnrollAlbnaa = false;
+    this.showJobApplicant = false;
+
+
   }
 
   showMagazineListHandler(): void {
@@ -634,6 +675,10 @@ getAllContact(){
     this.showEditIntern = false;
     this.showAddIntern = false;
     this.showDeleteIntern = false;
+    this.showEnrollAlbnaa = false;
+    this.showJobApplicant = false;
+
+
   }
 
   showMagazineAddHandler(): void {
@@ -661,6 +706,10 @@ getAllContact(){
     this.showEditIntern = false;
     this.showAddIntern = false;
     this.showDeleteIntern = false;
+    this.showEnrollAlbnaa = false;
+    this.showJobApplicant = false;
+
+
   }
 
   showMagazineEditHandler(): void {
@@ -688,6 +737,10 @@ getAllContact(){
     this.showEditIntern = false;
     this.showAddIntern = false;
     this.showDeleteIntern = false;
+    this.showEnrollAlbnaa = false;
+    this.showJobApplicant = false;
+
+
   }
 
   showMagazineDeleteHandler(): void {
@@ -715,6 +768,10 @@ getAllContact(){
     this.showEditIntern = false;
     this.showAddIntern = false;
     this.showDeleteIntern = false;
+    this.showEnrollAlbnaa = false;
+    this.showJobApplicant = false;
+
+
   }
 
   showMembershipListHandler(): void {
@@ -742,6 +799,10 @@ getAllContact(){
     this.showEditIntern = false;
     this.showAddIntern = false;
     this.showDeleteIntern = false;
+    this.showEnrollAlbnaa = false;
+    this.showJobApplicant = false;
+
+
   }
 
   showJobsListHandler(): void {
@@ -769,6 +830,10 @@ getAllContact(){
     this.showEditIntern = false;
     this.showAddIntern = false;
     this.showDeleteIntern = false;
+    this.showEnrollAlbnaa = false;
+    this.showJobApplicant = false;
+
+
   }
 
   showJobsAddHandler(): void {
@@ -796,6 +861,10 @@ getAllContact(){
     this.showEditIntern = false;
     this.showAddIntern = false;
     this.showDeleteIntern = false;
+    this.showEnrollAlbnaa = false;
+    this.showJobApplicant = false;
+
+
   }
 
   showJobsEditHandler(): void {
@@ -823,6 +892,10 @@ getAllContact(){
     this.showEditIntern = false;
     this.showAddIntern = false;
     this.showDeleteIntern = false;
+    this.showEnrollAlbnaa = false;
+    this.showJobApplicant = false;
+
+
   }
 
   showJobsDeleteHandler(): void {
@@ -850,6 +923,10 @@ getAllContact(){
     this.showEditIntern = false;
     this.showAddIntern = false;
     this.showDeleteIntern = false;
+    this.showEnrollAlbnaa = false;
+    this.showJobApplicant = false;
+
+
   }
 
   showAllProblemsHandler(): void {
@@ -877,6 +954,10 @@ getAllContact(){
     this.showEditIntern = false;
     this.showAddIntern = false;
     this.showDeleteIntern = false;
+    this.showEnrollAlbnaa = false;
+    this.showJobApplicant = false;
+
+
   }
 
   showCoursesProblemsHandler(): void {
@@ -904,6 +985,10 @@ getAllContact(){
     this.showEditIntern = false;
     this.showAddIntern = false;
     this.showDeleteIntern = false;
+    this.showEnrollAlbnaa = false;
+    this.showJobApplicant = false;
+
+
   }
 
   showInternProblemsHandler(): void {
@@ -931,6 +1016,10 @@ getAllContact(){
     this.showEditIntern = false;
     this.showAddIntern = false;
     this.showDeleteIntern = false;
+    this.showEnrollAlbnaa = false;
+    this.showJobApplicant = false;
+
+
   }
 
   showCoursesListHandler(): void {
@@ -958,6 +1047,10 @@ getAllContact(){
     this.showEditIntern = false;
     this.showAddIntern = false;
     this.showDeleteIntern = false;
+    this.showEnrollAlbnaa = false;
+    this.showJobApplicant = false;
+
+
   }
 
   showAddCoursesHandler(): void {
@@ -985,6 +1078,10 @@ getAllContact(){
     this.showEditIntern = false;
     this.showAddIntern = false;
     this.showDeleteIntern = false;
+    this.showEnrollAlbnaa = false;
+    this.showJobApplicant = false;
+
+
   }
 
   showEditCoursesHandler(): void {
@@ -1012,6 +1109,10 @@ getAllContact(){
     this.showEditIntern = false;
     this.showAddIntern = false;
     this.showDeleteIntern = false;
+    this.showEnrollAlbnaa = false;
+    this.showJobApplicant = false;
+
+
   }
 
   showDeleteCoursesHandler(): void {
@@ -1039,6 +1140,10 @@ getAllContact(){
     this.showEditIntern = false;
     this.showAddIntern = false;
     this.showDeleteIntern = false;
+    this.showEnrollAlbnaa = false;
+    this.showJobApplicant = false;
+
+
   }
 
   showInternListHandler(): void {
@@ -1066,6 +1171,10 @@ getAllContact(){
     this.showEditIntern = false;
     this.showAddIntern = false;
     this.showDeleteIntern = false;
+    this.showEnrollAlbnaa = false;
+    this.showJobApplicant = false;
+
+
   }
 
   showAddInternHandler(): void {
@@ -1093,6 +1202,10 @@ getAllContact(){
     this.showEditIntern = false;
     this.showAddIntern = true;
     this.showDeleteIntern = false;
+    this.showEnrollAlbnaa = false;
+    this.showJobApplicant = false;
+
+
   }
 
   showEditInternHandler(): void {
@@ -1120,6 +1233,10 @@ getAllContact(){
     this.showEditIntern = true;
     this.showAddIntern = false;
     this.showDeleteIntern = false;
+    this.showEnrollAlbnaa = false;
+    this.showJobApplicant = false;
+
+
   }
 
   showDeleteInternHandler(): void {
@@ -1147,5 +1264,67 @@ getAllContact(){
     this.showEditIntern = false;
     this.showAddIntern = false;
     this.showDeleteIntern = true;
+    this.showEnrollAlbnaa = false;
+    this.showJobApplicant = false;
+
+
+  }
+
+  showEnrollAlbnaaHandler(): void {
+    this.showNewsList = false;
+    this.showAddNews = false;
+    this.showEditNews = false;
+    this.showDeleteNews = false;
+    this.showMagazineList = false;
+    this.showAddMagazine = false;
+    this.showEditMagazine = false;
+    this.showDeleteMagazine = false;
+    this.showMembershipList = false;
+    this.showJobsList = false;
+    this.showAddJobsList = false;
+    this.showEditJobsList = false;
+    this.showDeleteJobsList = false;
+    this.showAllProblemsList = false;
+    this.showCoursesProblems = false;
+    this.showInternProblems = false;
+    this.showCoursesList = false;
+    this.showEditCourses = false;
+    this.showAddCourses = false;
+    this.showDeleteCourses = false;
+    this.showInternList = false;
+    this.showEditIntern = false;
+    this.showAddIntern = false;
+    this.showDeleteIntern = false;
+    this.showEnrollAlbnaa = true;
+    this.showJobApplicant = false;
+  }
+
+  showJobApplicantHandler(): void {
+    this.showNewsList = false;
+    this.showAddNews = false;
+    this.showEditNews = false;
+    this.showDeleteNews = false;
+    this.showMagazineList = false;
+    this.showAddMagazine = false;
+    this.showEditMagazine = false;
+    this.showDeleteMagazine = false;
+    this.showMembershipList = false;
+    this.showJobsList = false;
+    this.showAddJobsList = false;
+    this.showEditJobsList = false;
+    this.showDeleteJobsList = false;
+    this.showAllProblemsList = false;
+    this.showCoursesProblems = false;
+    this.showInternProblems = false;
+    this.showCoursesList = false;
+    this.showEditCourses = false;
+    this.showAddCourses = false;
+    this.showDeleteCourses = false;
+    this.showInternList = false;
+    this.showEditIntern = false;
+    this.showAddIntern = false;
+    this.showDeleteIntern = false;
+    this.showEnrollAlbnaa = false;
+    this.showJobApplicant = true;
   }
 }

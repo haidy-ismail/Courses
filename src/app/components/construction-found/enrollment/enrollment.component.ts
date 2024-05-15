@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { environment } from 'src/environments/environment.development';
 
 @Component({
   selector: 'app-enrollment',
@@ -50,7 +51,7 @@ export class EnrollmentComponent {
     // };
 
     // Send form data to API
-    this.http.post('https://localhost:7125/api/ConstructionFound/createConstructionOfEnrollment', this.formData)
+    this.http.post(environment.apiUrl +'ConstructionFound/createConstructionOfEnrollment', this.formData)
       .subscribe(response => {
         console.log('Form submitted successfully:', response);
         alert("Send successfully");
