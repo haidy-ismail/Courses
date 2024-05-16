@@ -4,7 +4,6 @@ import { ContactComponent } from './components/contact/contact.component';
 import { JobsComponent } from './components/jobs/jobs.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { ConstructionFoundComponent } from './components/construction-found/construction-found.component';
-import { EnrollmentComponent } from './components/construction-found/enrollment/enrollment.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { NewsComponent } from './components/news/news.component';
 import { MagazineComponent } from './components/magazine/magazine.component';
@@ -51,7 +50,7 @@ import { DashBoardComponent } from './components/dash-board/dash-board.component
 import { authGuard } from './gaurds/auth.guard';
 import { GuidMemComponent } from './components/membership/guid-mem/guid-mem.component';
 import { ApplyJobComponent } from './components/jobs/apply-job/apply-job.component';
-
+import {EnrollmentComponent} from './components/construction-found/enrollment/enrollment.component';
 
 const routes: Routes = [
   { path: '', component: MainComponent },

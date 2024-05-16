@@ -4,7 +4,8 @@
       <div class="row justify-content-between gy-4">
         <div class="col-lg-6 d-flex align-items-center" data-aos="fade-up">
           <form
-          (ngSubmit)="submitForm()"
+          [formGroup]="jobForm"
+          (ngSubmit)="onSubmit()"
             class="php-email-form"
             id="scrolled_form"
           >
@@ -15,7 +16,7 @@
                   type="text"
                   name="name"
                   class="form-control"
-                  [(ngModel)]="formData.name"
+                  formControlName="name"
                   placeholder="الاسم"
                   required
                 />
@@ -26,7 +27,7 @@
                   type="text"
                   class="form-control"
                   name="address"
-                  [(ngModel)]="formData.address"
+                  formControlName="address"
                   placeholder=" العنوان"
                   required
                 />
@@ -37,7 +38,7 @@
                   type="text"
                   class="form-control"
                   name="phone"
-                  [(ngModel)]="formData.phoneNumber"
+                  formControlName="phoneNumber"
                   placeholder="رقم الهاتف"
                   required
                 />
@@ -45,20 +46,20 @@
 
               <div class="col-md-12">
                 <label for="yearPicker" class="form-label">سنه الميلاد </label>
-                <input type="text" class="form-control" id="yearPicker" placeholder="DD MMM YYYY" appFormatDateInput [(ngModel)]="formData.dateOfBirth">
+                <input type="text" class="form-control" id="yearPicker" placeholder="DD MMM YYYY" appFormatDateInput formControlName="dateOfBirth">
             </div>
             
               
 
               <h6>النوع:</h6>
               <div class="form-check mt-1">
-                <input class="ms-2 " type="radio" name="أنثي" id="flexRadioDefault1">
+                <input class="ms-2 " type="radio" formControlName="gender" value="female" name="أنثي" id="flexRadioDefault1">
                 <label  for="أنثي">
                   أنثي 
                 </label>
               </div>
               <div class="form-check mt-1">
-                <input class="ms-2" type="radio" name="ذكر" id="flexRadioDefault2" >
+                <input class="ms-2" type="radio" formControlName="gender" value="male" name="ذكر" id="flexRadioDefault2" >
                 <label  for="ذكر">
                  ذكر
                 </label>
@@ -69,7 +70,7 @@
                   type="text"
                   class="form-control"
                   name="university"
-                  [(ngModel)]="formData.university"
+                  formControlName="university"
                   placeholder=" الجامعه"
                   required
                 />
@@ -80,7 +81,7 @@
                   type="text"
                   class="form-control"
                   name="faculty"
-                  [(ngModel)]="formData.faculty"
+                  formControlName="faculty"
 
                   placeholder=" الكليه"
                   required
@@ -89,7 +90,7 @@
 
               <div class="col-md-12">
                 <label for="yearPicker" class="form-label">سنه التخرج</label>
-                <input type="text" class="form-control" id="yearPicker"placeholder="DD MMM YYYY" appFormatDateInput [(ngModel)]="formData.graduationYear"
+                <input type="text" class="form-control" id="yearPicker"placeholder="DD MMM YYYY" appFormatDateInput formControlName="graduationYear"
                 >
               </div>
 
@@ -99,7 +100,7 @@
   
               <div class="mb-3">
                 <label for="formFile" class="form-label">السيره الذاتية</label>
-                <input class="form-control" type="file" id="formFile" [(ngModel)]="formData.cv"
+                <input class="form-control" type="file" (change)="handleFileInput($event)" id="formFile" formControlName="applicantCv"
                 >
               </div>
   

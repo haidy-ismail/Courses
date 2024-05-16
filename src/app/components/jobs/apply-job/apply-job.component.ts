@@ -1,7 +1,7 @@
 import { DatePipe } from '@angular/common';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Component, Directive, ElementRef, Pipe } from '@angular/core';
-import { NgControl } from '@angular/forms';
+import { FormBuilder, FormGroup, NgControl, Validators } from '@angular/forms';
 import { environment } from 'src/environments/environment.development';
 
 
@@ -17,26 +17,104 @@ export class ApplyJobComponent {
 private apiUrl:string = environment.apiUrl
   formData: any = {}; // Object to hold form data
 
+  jobForm!: FormGroup;
+  fileToUpload!: File | null;
 
+  constructor( private fb: FormBuilder,
+    private http: HttpClient ) {
+      this.jobForm = this.fb.group({
+        name: ['', Validators.required],
+        dateOfBirth: ['', Validators.required],
+        address: ['', Validators.required],
+        phoneNumber: ['', Validators.required],
+        graduationYear: ['', Validators.required],
+        gender: ['', Validators.required],
+        university: ['', Validators.required],
+        faculty: ['', Validators.required],
+        applicantCv: ['', Validators.required]
 
-  constructor(private http: HttpClient ) {}
-
-  submitForm(): void {
-    
-    // Send form data to API
-    this.http.post(`${this.apiUrl}JobApplicant/AddjobApplicant`, this.formData)
-      .subscribe(response => {
-        console.log('Form submitted successfully:', response);
-        alert("Send successfully")
-        // Optionally, reset the form after successful submission
-        this.resetForm();
-      }, error => {
-        console.error('Error submitting form:', error);
       });
-  }
+    }
 
-  resetForm(): void {
-    // Clear form data
-    this.formData = {};
-  }
+    handleFileInput(event: Event) {
+      const inputElement = event.target as HTMLInputElement;
+      const files: FileList | null = inputElement.files;
+      if (files && files.length > 0) {
+        this.fileToUpload = files[0];
+        console.log(this.fileToUpload); // Log the selected file to verify
+        
+      } 
+      else {
+        console.error('No file selected');
+      }
+    }
+
+    onSubmit() {
+      if (!this.fileToUpload) {
+        console.error('No file selected');
+        return;
+      }
+      const formData = new FormData();
+      const name = this.jobForm.get('name')!.value;
+      const dateOfBirth = this.jobForm.get('dateOfBirth')!.value;
+      const address = this.jobForm.get('address')!.value;
+      const phoneNumber = this.jobForm.get('phoneNumber')!.value;  
+      const graduationYear = this.jobForm.get('graduationYear')!.value;   
+      const gender = this.jobForm.get('gender')!.value;   
+      const university = this.jobForm.get('university')!.value;   
+      const faculty = this.jobForm.get('faculty')!.value;   
+      const applicantCv = this.jobForm.get('applicantCv')!.value;   
+ 
+      if (name && dateOfBirth && address && phoneNumber && graduationYear &&
+        gender && university && faculty && applicantCv
+       ) {
+        formData.append('name', name);
+        formData.append('dateOfBirth', dateOfBirth);
+        formData.append('address', address);
+        formData.append('phoneNumber', phoneNumber);
+        formData.append('graduationYear', graduationYear);
+        formData.append('gender', gender);
+        formData.append('university', university);
+        formData.append('faculty', faculty);
+        formData.append('applicantCv', applicantCv);
+      
+
+      } else {
+        console.error('One or more form fields are null');
+        return;
+      }
+    
+      formData.append('applicantCv', this.fileToUpload!); // Assert non-null with !
+    
+      this.http.post<any>(`${this.apiUrl}JobApplicant/AddjobApplicant`, formData)
+        .subscribe(
+          (response) => {
+            console.log('Application created successfully:', response);
+            // Reset form after successful submission
+            this.jobForm.reset();
+          },
+          (error: HttpErrorResponse) => {
+            console.error('Error creating trainer:', error.error);
+            // Handle error
+          }
+        );
+    }
+  // submitForm(): void {
+    
+  //   // Send form data to API
+  //   this.http.post(`${this.apiUrl}JobApplicant/AddjobApplicant`, this.formData)
+  //     .subscribe(response => {
+  //       console.log('Form submitted successfully:', response);
+  //       alert("Send successfully")
+  //       // Optionally, reset the form after successful submission
+  //       this.resetForm();
+  //     }, error => {
+  //       console.error('Error submitting form:', error);
+  //     });
+  // }
+
+  // resetForm(): void {
+  //   // Clear form data
+  //   this.formData = {};
+  // }
 }
