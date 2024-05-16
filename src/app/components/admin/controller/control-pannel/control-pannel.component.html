@@ -353,7 +353,160 @@
               >
             </div>
           </li>
+
+
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="dropdownMenuLink"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="feather feather-users align-text-bottom"
+                aria-hidden="true"
+              >
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                <circle cx="9" cy="7" r="4"></circle>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+              </svg>
+              
+              تقديمات <br>الكورسات
+            </a>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+              <a class="dropdown-item" (click)="showCourseApplicantHandler()"
+                >عرض</a
+              >
+            </div>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="dropdownMenuLink"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="feather feather-users align-text-bottom"
+                aria-hidden="true"
+              >
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                <circle cx="9" cy="7" r="4"></circle>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+              </svg>
+              
+              تقديمات <br>التدريب المهني
+            </a>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+              <a class="dropdown-item" (click)="showTrainingApplicantHandler()"
+                >عرض</a
+              >
+            </div>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="dropdownMenuLink"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="feather feather-users align-text-bottom"
+                aria-hidden="true"
+              >
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                <circle cx="9" cy="7" r="4"></circle>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+              </svg>
+              
+              استعلام <br>الكورسات
+            </a>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+              <a class="dropdown-item" (click)="showCourseAskInfoHandler()"
+                >عرض</a
+              >
+            </div>
+          </li>
+
+          
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="dropdownMenuLink"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="feather feather-users align-text-bottom"
+                aria-hidden="true"
+              >
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                <circle cx="9" cy="7" r="4"></circle>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+              </svg>
+              
+             اضافه <br>النتيجه
+            </a>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+              <a class="dropdown-item" (click)="showAddResultHandler()"
+                >عرض</a
+              >
+            </div>
+          </li>
+          
         </ul>
+
+
 
         <h6
           class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted text-uppercase"
@@ -477,38 +630,170 @@
         <h1 class="h2">لوحة التحكم</h1>
       </div>
 
+      
+      <!-- addResult -->
+
+      <section
+        *ngIf="showAddingResult"
+      id="get-started"
+      class="get-started mt-0"
+    >
+      <h2 style="padding-right: 100px">اضافه نتيجه</h2>
+
+      <div class="col-lg-6 d-flex align-items-center" data-aos="fade-up">
+        <form
+          class="php-email-form mt-0"
+          id="scrolled_form"
+          [formGroup]="myResultForm"
+          (ngSubmit)="onSubmitResult()"
+        >
+          <div class="row gy-3 mt-0">
+            <div class="col-md-12">
+              <input
+                type="text"
+                name="name"
+                class="form-control"
+                placeholder=" الاسم"
+                formControlName="name"
+                required
+              />
+            </div>
+
+            <div class="col-md-12">
+              <input
+                type="number"
+                class="form-control"
+                name="nationalNumber"
+                placeholder="الرقم القومي"
+                formControlName="nationalNumber"
+                required
+              />
+            </div>
+
+            <div class="col-md-12">
+              <input
+                type="text"
+                class="form-control"
+                name="trainingName"
+                placeholder="التدريب "
+                formControlName="trainingName"
+                required
+              />
+            </div>
+
+            <div class="col-md-12">
+              <input
+                type="number"
+                class="form-control"
+                name="degree"
+                placeholder=" الدرجة"
+                formControlName="degree"
+                required
+              />
+            </div>
+
+            <div class="col-md-12">
+              <input
+                type="text"
+                class="form-control"
+                name="estimation"
+                placeholder=" التقدير"
+                formControlName="estimation"
+                required
+              />
+            </div>
+
+            <div class="col-md-12 text-center">
+              <button type="submit">حفظ</button>
+            </div>
+
+            </div>
+            </form>
+            </div>
+            </section>
+          
+
+
+
+      <!-- استعلام الكورسات  -->
+      <div *ngIf="showCourseAskInfo" class="table-responsive">
+        <table class="table table-striped table-sm">
+          <thead>
+            <tr>
+              <th>الرقم التسلسلي</th>
+              <th> الاسم</th>
+              <th>البريد الالكتروني</th>
+              <th>الهاتف</th>
+              <th>المؤهل الدراسي</th>
+              <th>الكورس </th>
+              <th>الاستفسار</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of courseAskInfo">
+              <th scope="row">{{ item.id }}</th>
+              <td>{{ item.name }}</td>
+              <td>{{ item.email }}</td>
+              <td>{{ item.phone }}</td>
+              <td>{{ item.educationalQualification }}</td>
+              <td>{{ item.courseAskAbout }}</td>
+              <td>{{ item.question }}</td>
+
+
+            </tr>
+          </tbody>
+        </table>
+      </div>
       <!-- //طلبات الالتحاق بالمؤسسة -->
 
-      <div *ngIf="showJobApplicant" class="table-responsive">
+      <div *ngIf="showEnrollAlbnaa" class="table-responsive">
         <table class="table table-striped table-sm">
           <thead>
             <tr>
               <th>الرقم التسلسلي</th>
               <th>الاسم</th>
               <th>الهاتف</th>
-              <th> تاريخ الميلاد</th>
-              <th> العنوان</th>
-              <th>سنه التخرج</th>
-              <th>النوع</th>
-              <th>الجامعه</th>
-              <th>الكليه</th>
-              <th>السيره الذاتية</th>
+              <th>البريد الالكتروني</th>
+              <th>  المؤهل الدراسي</th>
+              <th> الوظيفة الحالية</th>
+              <th> المحافظة</th>
+              <th>المدينة</th>
+              <th>الرمز البريدي</th>
+              <th>الاختيار1</th>
+              <th>الاختيار2</th>
+              <th>الاختيار3</th>
+              <th>الاختيار4</th>
+              <th>الاختيار5</th>
+              <th>الاختيار6</th>
+              <th>الاختيار7</th>
+              <th>الشخص الاول</th>
+              <th>الشخص الثاني</th>
+
              
               
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let item of jobApplicant">
+            <tr *ngFor="let item of applyAlbnaa">
               <th scope="row">{{item.id}}</th>
               <td>{{item.name}}</td>
               <td>{{item.phoneNumber}}</td>
-              <td>{{item.dateOfBirth}}</td>
-              <td>{{item.address}}</td>
-              <td>{{item.graduationYear}}</td>
-              <td>{{item.gender}}</td>
-              <td>{{item.university}}</td>
-              <td>{{item.faculty}}</td>
-              <td>{{item.applicantCv}}</td>
+              <td>{{item.email}}</td>
+              <td>{{item.qualification}}</td>
+              <td>{{item.currentJob}}</td>
+              <td>{{item.country}}</td>
+              <td>{{item.city}}</td>
+              <td>{{item.volunteeringWorkHaveInterestIn}}</td>
+              <td>{{item.someOneBenefitToWorkWith}}</td>
+              <td>{{item.groupYouNotBoredof}}</td>
+              <td>{{item.volunteeringTime}}</td>
+              <td>{{item.geographicalAdvantageInVolunteerWork}}</td>
+              <td>{{item.haveCarForVolunteering}}</td>
+              <td>{{item.knowAboutUs}}</td>
+              <td>{{item.presonF}}</td>
+              <td>{{item.presonS}}</td>
+
+
 
 
             </tr>
@@ -528,6 +813,97 @@
         </table>
       </div>
 
+      <!-- طلبات التقديم للكورسات  -->
+      <div *ngIf="showCourseApplicant" class="table-responsive">
+        <table class="table table-striped table-sm">
+          <thead>
+            <tr>
+              <th>الرقم التسلسلي</th>
+              <th> الاسم</th>
+              <th>البريد الالكتروني</th>
+              <th>الهاتف</th>
+              <th>المؤهل الدراسي</th>
+              <th>الكورس </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of courseApplicant">
+              <th scope="row">{{ item.id }}</th>
+              <td>{{ item.name }}</td>
+              <td>{{ item.email }}</td>
+              <td>{{ item.phoneNumber }}</td>
+              <td>{{ item.educationalQualification }}</td>
+              <td>{{ item.courseName }}</td>
+
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- طلبات التقديم علي وظائف -->
+      <div *ngIf="showJobApplicant" class="table-responsive">
+        <table class="table table-striped table-sm">
+          <thead>
+            <tr>
+              <th>الرقم التسلسلي</th>
+              <th> الاسم</th>
+              <th> تاريخ الميلاد</th>
+              <th>الهاتف</th>
+              <th> العنوان</th>
+              <th>سنه التخرج </th>
+              <th>النوع</th>
+              <th>الجامعه</th>
+              <th>الكليه</th>
+              <th>CV</th>
+
+
+
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of jobApplicant">
+              <th scope="row">{{ item.id }}</th>
+              <td>{{ item.name }}</td>
+              <td>{{ item.dateOfBirth }}</td>
+              <td>{{ item.phoneNumber }}</td>
+              <td>{{ item.address }}</td>
+              <td>{{ item.graduationYear }}</td>
+              <td>{{item.gender}}</td>
+              <td>{{item.university}}</td>
+              <td>{{item.faculty}}</td>
+              <td>{{item.applicantCv}}</td>
+
+
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+
+      <!-- طلبات التقديم للتدريب المهني -->
+      <div *ngIf="showTrainingApplicant" class="table-responsive">
+        <table class="table table-striped table-sm">
+          <thead>
+            <tr>
+              <th>الرقم التسلسلي</th>
+              <th> الاسم</th>
+              <th>الهاتف</th>
+              <th>المؤهل الدراسي</th>
+              <th>التدريب </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of trainingApplicant">
+              <th scope="row">{{ item.id }}</th>
+              <td>{{ item.name }}</td>
+              <td>{{ item.phone }}</td>
+              <td>{{ item.educationalQualification }}</td>
+              <td>{{ item.trainingName }}</td>
+
+            </tr>
+          </tbody>
+        </table>
+      </div>
       <!-- show News List -->
 
       <div *ngIf="showNewsList" class="table-responsive">
@@ -891,7 +1267,7 @@
       <div *ngIf="showMembershipList" class="table-responsive">
         <table class="table table-striped table-sm">
           <thead>
-            <tr>
+            <tr >
               <th>الرقم التسلسلي</th>
               <th>الاسم باللغه العربيه</th>
               <th>الاسم باللغه الانجليزيه</th>
@@ -908,51 +1284,23 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope="row">1001</th>
-              <td>Mark Otto</td>
-              <td>Japan</td>
-              <td>Html</td>
-              <td>Mark Otto</td>
-              <td>Japan</td>
-              <td>Html</td>
-              <td>Mark Otto</td>
-              <td>Japan</td>
-              <td>Html</td>
-              <td>Mark Otto</td>
-              <td>Japan</td>
-              <td>Html</td>
+            <tr *ngFor="let item of membershipApplicant">
+              <th scope="row">{{item.id}}</th>
+              <td>{{item.fullNameInArabic}} </td>
+              <td>{{item.fullNameInEnglish}}</td>
+              <td>{{item.nationalNumber}}</td>
+              <td>{{item.email}}</td>
+              <td>{{item.phone}}</td>
+              <td>{{item.city}}</td>
+              <td>{{item.address}} </td>
+              <td>{{item.gender}}</td>
+              <td>{{item.status}}</td>
+              <td>{{item.memberType}}</td>
+              <td>{{item.memberSystem}}</td>
+              <td>{{item.memberCategory}}</td>
             </tr>
-            <tr>
-              <th scope="row">1001</th>
-              <td>Mark Otto</td>
-              <td>Japan</td>
-              <td>Html</td>
-              <td>Mark Otto</td>
-              <td>Japan</td>
-              <td>Html</td>
-              <td>Mark Otto</td>
-              <td>Japan</td>
-              <td>Html</td>
-              <td>Mark Otto</td>
-              <td>Japan</td>
-              <td>Html</td>
-            </tr>
-            <tr>
-              <th scope="row">1001</th>
-              <td>Mark Otto</td>
-              <td>Japan</td>
-              <td>Html</td>
-              <td>Mark Otto</td>
-              <td>Japan</td>
-              <td>Html</td>
-              <td>Mark Otto</td>
-              <td>Japan</td>
-              <td>Html</td>
-              <td>Mark Otto</td>
-              <td>Japan</td>
-              <td>Html</td>
-            </tr>
+            
+           
           </tbody>
         </table>
       </div>
@@ -1668,6 +2016,7 @@
           </form>
         </div>
       </section>
+
     </main>
   </div>
 </div>

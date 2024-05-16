@@ -9,7 +9,7 @@ import { JobsComponent } from './components/jobs/jobs.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { LogInComponent } from './components/log-in/log-in.component';
 import { ConstructionFoundComponent } from './components/construction-found/construction-found.component';
-import { EnrollmentComponent } from './components/construction-found/enrollment/enrollment.component';
+// import { EnrollmentComponent } from './components/construction-found/enrollment/enrollment.component';
 import { NewsComponent } from './components/news/news.component';
 import { MagazineComponent } from './components/magazine/magazine.component';
 import { MainComponent } from './components/main/main.component';
@@ -25,7 +25,7 @@ import { NursingComponent } from './components/InterConstructionCentre/internPro
 import { BuildingInstituteComponent } from './components/building-institute/building-institute.component';
 import { VisionComponent } from './components/building-institute/vision/vision.component';
 import { AdditionsComponent } from './components/building-institute/additions/additions.component';
-import { ApplyComponent } from './components/InterConstructionCentre/internProgram/apply/apply.component';
+// import { ApplyComponent } from './components/InterConstructionCentre/internProgram/apply/ApplyComponent';
 import { EnrollComponent } from './components/InterConstructionCentre/Courses/enroll/enroll.component';
 import { EnquiryComponent } from './components/InterConstructionCentre/Courses/enquiry/enquiry.component';
 import { ProblemInternComponent } from './components/InterConstructionCentre/internProgram/problem-intern/problem-intern.component';
@@ -52,12 +52,14 @@ import { IcdlComponent } from './components/InterConstructionCentre/Courses/abou
 import { AidComponent } from './components/InterConstructionCentre/Courses/about-course/aid/aid.component';
 import { SpaceDiplomaComponent } from './components/InterConstructionCentre/Courses/about-course/space-diploma/space-diploma.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { NgToastModule } from 'ng-angular-popup';
 import { DashBoardComponent } from './components/dash-board/dash-board.component';
 import { TokenInterceptor } from './interceptors/token.interceptor';
 import { ProblemsComponent } from './components/InterConstructionCentre/Courses/problems/problems.component';
 import { ApplyJobComponent } from './components/jobs/apply-job/apply-job.component';
+import { ApplyTrainingComponent } from './components/InterConstructionCentre/internProgram/apply/apply.component';
+import { EnrollmentComponent } from './components/construction-found/enrollment/enrollment.component';
 
 @NgModule({
   declarations: [
@@ -68,7 +70,7 @@ import { ApplyJobComponent } from './components/jobs/apply-job/apply-job.compone
     JobsComponent,
     RegistrationComponent,
     ConstructionFoundComponent,
-    EnrollmentComponent,
+    // EnrollmentComponent,
     NewsComponent,
     MagazineComponent,
     MainComponent,
@@ -86,7 +88,6 @@ import { ApplyJobComponent } from './components/jobs/apply-job/apply-job.compone
     BuildingInstituteComponent,
     VisionComponent,
     AdditionsComponent,
-    ApplyComponent,
     EnrollComponent,
     EnquiryComponent,
     ProblemInternComponent,
@@ -116,7 +117,6 @@ import { ApplyJobComponent } from './components/jobs/apply-job/apply-job.compone
     BuildingInstituteComponent,
     VisionComponent,
     AdditionsComponent,
-    ApplyComponent,
     EnrollComponent,
     EnquiryComponent,
     ProblemInternComponent,
@@ -125,6 +125,14 @@ import { ApplyJobComponent } from './components/jobs/apply-job/apply-job.compone
     DashBoardComponent,
     ProblemsComponent,
     ApplyJobComponent,
+    AppComponent,
+    ApplyTrainingComponent,
+    EnrollmentComponent
+    
+    
+    
+
+    
 
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

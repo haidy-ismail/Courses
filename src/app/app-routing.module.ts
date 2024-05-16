@@ -4,6 +4,8 @@ import { ContactComponent } from './components/contact/contact.component';
 import { JobsComponent } from './components/jobs/jobs.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { ConstructionFoundComponent } from './components/construction-found/construction-found.component';
+
+// import { EnrollmentComponent } from './components/construction-found/enrollment/enrollment.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { NewsComponent } from './components/news/news.component';
 import { MagazineComponent } from './components/magazine/magazine.component';
@@ -24,7 +26,6 @@ import { EnrollComponent } from './components/InterConstructionCentre/Courses/en
 import { EnquiryComponent } from './components/InterConstructionCentre/Courses/enquiry/enquiry.component';
 import { ProblemInternComponent } from './components/InterConstructionCentre/internProgram/problem-intern/problem-intern.component';
 import { ProblemsComponent } from './components/InterConstructionCentre/Courses/problems/problems.component';
-import { ApplyComponent } from './components/InterConstructionCentre/internProgram/apply/apply.component';
 import { ResultComponent } from './components/InterConstructionCentre/internProgram/result/result.component';
 import { ApplyMemComponent } from './components/membership/apply-mem/apply-mem.component';
 import { AboutCourseComponent } from './components/InterConstructionCentre/Courses/about-course/about-course.component';
@@ -51,6 +52,9 @@ import { authGuard } from './gaurds/auth.guard';
 import { GuidMemComponent } from './components/membership/guid-mem/guid-mem.component';
 import { ApplyJobComponent } from './components/jobs/apply-job/apply-job.component';
 import {EnrollmentComponent} from './components/construction-found/enrollment/enrollment.component';
+import { ApplyTrainingComponent } from './components/InterConstructionCentre/internProgram/apply/apply.component';
+// import { EnrollmentComponent } from './components/construction-found/enrollment/enrollment.component';
+
 
 const routes: Routes = [
   { path: '', component: MainComponent },
@@ -79,7 +83,7 @@ const routes: Routes = [
   {path:'problemsCourse',component:ProblemsComponent},
   {path:'enquiry',component:EnquiryComponent},
   {path:'problemIntern',component:ProblemInternComponent},
-  {path:'applicant',component:ApplyComponent},
+  {path:'applicant',component:ApplyTrainingComponent},
   {path:'result',component:ResultComponent},
   {path:'membershipApply',component:ApplyMemComponent},
   {path:'aboutCourse',component:AboutCourseComponent},

@@ -7,6 +7,7 @@
           [formGroup]="jobForm"
           (ngSubmit)="onSubmit()"
             class="php-email-form"
+                    class="php-email-form"
             id="scrolled_form"
           >
             <h3>تقديم للوظيفة</h3>
@@ -47,6 +48,8 @@
               <div class="col-md-12">
                 <label for="yearPicker" class="form-label">سنه الميلاد </label>
                 <input type="text" class="form-control" id="yearPicker" placeholder="DD MMM YYYY" appFormatDateInput formControlName="dateOfBirth">
+                <!-- <input type="text" class="form-control" id="yearPicker" placeholder="DD MMM YYYY"  formControlName="dateOfBirth"
+                > -->
             </div>
             
               
@@ -58,11 +61,17 @@
                   أنثي 
                 </label>
               </div>
-              <div class="form-check mt-1">
+              <!-- <div class="form-check mt-1">
                 <input class="ms-2" type="radio" formControlName="gender" value="male" name="ذكر" id="flexRadioDefault2" >
                 <label  for="ذكر">
                  ذكر
                 </label>
+                <input class="ms-2" type="radio" name="gender" id="femaleRadio" formControlName="gender" value="female">
+                <label class="form-check-label" for="femaleRadio">أنثى</label>
+              </div> -->
+              <div class="form-check mt-1">
+                <input class="ms-2" type="radio" name="gender" id="maleRadio" formControlName="gender" value="male">
+                <label class="form-check-label" for="maleRadio">ذكر</label>
               </div>
 
               <div class="col-md-12">
@@ -82,7 +91,6 @@
                   class="form-control"
                   name="faculty"
                   formControlName="faculty"
-
                   placeholder=" الكليه"
                   required
                 />
@@ -90,7 +98,8 @@
 
               <div class="col-md-12">
                 <label for="yearPicker" class="form-label">سنه التخرج</label>
-                <input type="text" class="form-control" id="yearPicker"placeholder="DD MMM YYYY" appFormatDateInput formControlName="graduationYear"
+                <!-- <input type="text" class="form-control" id="yearPicker"placeholder="DD MMM YYYY" appFormatDateInput formControlName="graduationYear" -->
+                <input type="text" class="form-control" id="yearPicker"placeholder="DD MMM YYYY"  formControlName="graduationYear"
                 >
               </div>
 
@@ -100,14 +109,12 @@
   
               <div class="mb-3">
                 <label for="formFile" class="form-label">السيره الذاتية</label>
-                <input class="form-control" type="file" (change)="handleFileInput($event)" id="formFile" formControlName="applicantCv"
-                >
-              </div>
-  
-          
-  
-             
 
+                <input class="form-control" type="file" (change)="handleFileInput($event)" id="formFile" formControlName="applicantCv">
+
+                <!-- <input class="form-control" type="file" id="formFile"  formControlName="applicantCv"
+                > -->
+              </div>
   
             
               <div class="col-md-12 text-center">

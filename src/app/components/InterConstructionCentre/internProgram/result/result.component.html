@@ -31,52 +31,25 @@
     <th>#</th>
     <th>الاسم</th>
     <th>الرقم القومي</th>
-    <th>القسم</th>
+    <th>التدريب</th>
     <th>الدرجة</th>
     <th>التقدير</th>
     </tr>
     </thead>
     <tbody>
-    <tr>
-    <td>1</td>
-    <td> Michael Holz</td>
-    <td>London</td>
-    <td>Jun 15, 2017</td>
-    <td> Delivered</td>
-    <td>$254</td>
+    <tr *ngFor="let item of results">
+    <td>{{item.id}}</td>
+    <td> {{item.name}}</td>
+    <td>{{item.nationalNumber}}</td>
+    <td>{{item.trainingName}}</td>
+    <td> {{item.degree}}</td>
+    <td>{{item.estimation}}</td>
     </tr>
-    <tr>
-    <td>2</td>
-    <td> Paula Wilson</td>
-    <td>Madrid</td>
-    <td>Jun 21, 2017</td>
-    <td> Shipped</td>
-    <td>$1,260</td>
-    </tr>
-    <tr>
-    <td>3</td>
-    <td> Antonio Moreno</td>
-    <td>Berlin</td>
-    <td>Jul 04, 2017</td>
-    <td> Cancelled</td>
-    <td>$350</td>
-    </tr>
-    <tr>
-    <td>4</td>
-    <td>Mary Saveley</td>
-    <td>New York</td>
-    <td>Jul 16, 2017</td>
-    <td>Pending</td>
-    <td>$1,572</td>
-    </tr>
-    <tr>
-    <td>5</td>
-    <td> Martin Sommer</td>
-    <td>Paris</td>
-    <td>Aug 04, 2017</td>
-    <td> Delivered</td>
-    <td>$580</td>
-    </tr>
+  
+  
+    
+   
+
     </tbody>
     </table>
 

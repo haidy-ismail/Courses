@@ -1,9 +1,9 @@
 import { DatePipe } from '@angular/common';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Component, Directive, ElementRef, Pipe } from '@angular/core';
 import { FormBuilder, FormGroup, NgControl, Validators } from '@angular/forms';
+import { Component, Directive, ElementRef, OnInit, Pipe } from '@angular/core';
+import { JobApplicantService } from 'src/app/services/job-applicant.service';
 import { environment } from 'src/environments/environment.development';
-
 
 @Component({
   selector: 'app-apply-job',
@@ -12,8 +12,7 @@ import { environment } from 'src/environments/environment.development';
 })
 
 
-
-export class ApplyJobComponent {
+export class ApplyJobComponent implements OnInit {
 private apiUrl:string = environment.apiUrl
   formData: any = {}; // Object to hold form data
 
@@ -99,22 +98,10 @@ private apiUrl:string = environment.apiUrl
           }
         );
     }
-  // submitForm(): void {
-    
-  //   // Send form data to API
-  //   this.http.post(`${this.apiUrl}JobApplicant/AddjobApplicant`, this.formData)
-  //     .subscribe(response => {
-  //       console.log('Form submitted successfully:', response);
-  //       alert("Send successfully")
-  //       // Optionally, reset the form after successful submission
-  //       this.resetForm();
-  //     }, error => {
-  //       console.error('Error submitting form:', error);
-  //     });
-  // }
 
-  // resetForm(): void {
-  //   // Clear form data
-  //   this.formData = {};
-  // }
+
+
+  ngOnInit(): void {
+
+  }
 }
