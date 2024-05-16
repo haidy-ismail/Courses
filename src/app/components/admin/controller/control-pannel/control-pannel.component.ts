@@ -13,6 +13,11 @@ import { CourseProblemsService } from 'src/app/services/course-problems.service'
 import { InternProblemsService } from 'src/app/services/intern-problems.service';
 import { JobApplicantService } from 'src/app/services/job-applicant.service';
 import { CourseApplicantService } from 'src/app/services/course-applicant.service';
+import { TrainingApplicantService } from 'src/app/services/training-applicant.service';
+import { EnquiryCourseService } from 'src/app/services/enquiry-course.service';
+import { EnrollAlbnaaService } from 'src/app/services/enroll-albnaa.service';
+import { MembershipService } from 'src/app/services/membership.service';
+import { ResultService } from 'src/app/services/result.service';
 
 @Component({
   selector: 'app-control-pannel',
@@ -30,6 +35,9 @@ export class ControlPannelComponent implements OnInit {
   internProblems :any[] = [];
   jobApplicant:any[] = [];
   courseApplicant:any[] = [];
+  trainingApplicant:any[] =[];
+  courseAskInfo:any[] = [];
+  applyAlbnaa:any[] = [];
   myForm: FormGroup ;
   myMagazineForm:FormGroup;
   data: any[] = [];
@@ -38,11 +46,8 @@ export class ControlPannelComponent implements OnInit {
   isEditing = false;
   myCoursesForm:FormGroup;
   myJobForm:FormGroup;
-
-
-
-
-
+  membershipApplicant:any[] =[];
+  myResultForm:FormGroup;
 
 
   constructor(
@@ -56,7 +61,12 @@ export class ControlPannelComponent implements OnInit {
     private courseProblemsService :CourseProblemsService,
     private internProblemService :InternProblemsService,
     private jobApplicantService :JobApplicantService,
-    private courseApplicantService : CourseApplicantService
+    private courseApplicantService : CourseApplicantService,
+    private trainingApplicantService :TrainingApplicantService,
+    private enquiryCourseService :EnquiryCourseService,
+    private enrollAlbnaaService :EnrollAlbnaaService,
+    private membershipService :MembershipService,
+    private resultService:ResultService
 
   ) {
 
@@ -91,6 +101,15 @@ this.myJobForm = this.fb.group({
   location:['', Validators.required]
 });
 
+this.myResultForm = this.fb.group({
+  name:['', Validators.required],
+  nationalNumber: ['', Validators.required],
+  trainingName:['', Validators.required],
+  degree:['', Validators.required],
+  estimation:['', Validators.required]
+
+});
+
 
 
  }
@@ -106,8 +125,61 @@ this.myJobForm = this.fb.group({
     this.getAllInternProblems();
     this.getAllJobApplicant();
     this.getAllCourseApplicant();
+    this.getAllTrainingApplicant();
+    this.getAllEnguiryCourse();
+    this.getAllEnrollmentAlbnaa();
+    this.getAllMembershipApplicant();
   }
 
+
+  onSubmitResult() {
+    if (this.myResultForm.valid) {
+      const newResultItem = this.myResultForm.value;
+      this.resultService.postResult(newResultItem).subscribe(
+          () => {
+            alert('تم الاضافه')
+              console.log('result item added successfully');
+              console.log('Form data:', this.myResultForm);
+              this.myResultForm.reset();
+              // Optionally, refresh the news list or navigate back to the list
+              
+               // Function to refresh the news list
+          },
+          error => {
+              console.error('Error adding result item:', error);
+              console.log('Form data:', this.myResultForm);
+  
+          }
+      );
+  } else {
+      console.error('Form is invalid');
+  }
+  }
+  
+
+
+  getAllMembershipApplicant(){
+    this.membershipService.getMembershipApplicant().subscribe((res:any)=>{
+      this.membershipApplicant = res
+    })
+  }
+
+  getAllEnrollmentAlbnaa(){
+    this.enrollAlbnaaService.getAllEnrollElbnaa().subscribe((res:any)=>{
+      this.applyAlbnaa = res
+    })
+  }
+  getAllEnguiryCourse(){
+    this.enquiryCourseService.getAllCourseAskInfo().subscribe((res:any)=>{
+      this.courseAskInfo = res
+    })
+  }
+
+  getAllTrainingApplicant(){
+    this.trainingApplicantService.getAllTrainingApplicant().subscribe((res:any)=>{
+      this.trainingApplicant = res
+    })
+  }
 
   getAllCourseApplicant(){
     this.courseApplicantService.getAllCoursepplicant().subscribe((res:any)=>{
@@ -440,56 +512,6 @@ getAllContact(){
 }
 
 
- 
-
-// onSubmitNews() {
-//   if (this.myForm.valid) {
-//       const newsData = this.myForm.value;
-
-//       if (this.currentNewsId !== null) {
-//           // Perform update (PUT request)
-//           this.newsService.updateNewsById(this.currentNewsId, newsData).subscribe(
-//               () => {
-//                   console.log('News item updated successfully');
-//                   // Refresh the news list
-//                   this.getAllnews();
-//                   // Reset form and state after successful update
-//                   this.resetFormAndState();
-//               },
-//               error => {
-//                   console.error('Error updating news item:', error);
-//               }
-//           );
-//       } else {
-//           // Perform create (POST request)
-//           this.newsService.postNews(newsData).subscribe(
-//               () => {
-//                   console.log('News item created successfully');
-//                   // Refresh the news list
-//                   this.getAllnews();
-//                   // Reset form and state after successful creation
-//                   this.resetFormAndState();
-//               },
-//               error => {
-//                   console.error('Error creating news item:', error);
-//               }
-//           );
-//       }
-//   } else {
-//       console.error('Form is invalid');
-//   }
-// }
-
-// Function to reset form and state after submission
-
-
-
-
-
-
-
-
-
 
   showNewsList = false;
   showAddNews = false;
@@ -525,6 +547,10 @@ getAllContact(){
 
   showEnrollAlbnaa = false;
   showJobApplicant = false;
+  showCourseApplicant = false;
+  showTrainingApplicant = false;
+  showCourseAskInfo = false;
+  showAddingResult = false;
 
   showNewsListHandler(): void {
     this.showNewsList = true;
@@ -553,7 +579,10 @@ getAllContact(){
     this.showDeleteIntern = false;
     this.showEnrollAlbnaa = false;
     this.showJobApplicant = false;
-
+    this.showCourseApplicant = false;
+    this.showTrainingApplicant = false;
+    this.showCourseAskInfo = false;
+    this.showAddingResult = false;
 
   }
 
@@ -584,6 +613,11 @@ getAllContact(){
     this.showDeleteIntern = false;
     this.showEnrollAlbnaa = false;
     this.showJobApplicant = false;
+    this.showCourseApplicant = false;
+    this.showTrainingApplicant = false;
+    this.showCourseAskInfo = false;
+    this.showAddingResult = false;
+
 
 
   }
@@ -615,6 +649,14 @@ getAllContact(){
     this.showDeleteIntern = false;
     this.showEnrollAlbnaa = false;
     this.showJobApplicant = false;
+    this.showCourseApplicant = false;
+    this.showTrainingApplicant = false;
+    this.showCourseAskInfo = false;
+    this.showAddingResult = false;
+
+
+
+
 
 
   }
@@ -646,6 +688,14 @@ getAllContact(){
     this.showDeleteIntern = false;
     this.showEnrollAlbnaa = false;
     this.showJobApplicant = false;
+    this.showCourseApplicant = false;
+    this.showTrainingApplicant = false;
+    this.showCourseAskInfo = false;
+    this.showAddingResult = false;
+
+
+
+
 
 
   }
@@ -677,6 +727,14 @@ getAllContact(){
     this.showDeleteIntern = false;
     this.showEnrollAlbnaa = false;
     this.showJobApplicant = false;
+    this.showCourseApplicant = false;
+    this.showTrainingApplicant = false;
+    this.showCourseAskInfo = false;
+    this.showAddingResult = false;
+
+
+
+
 
 
   }
@@ -708,6 +766,14 @@ getAllContact(){
     this.showDeleteIntern = false;
     this.showEnrollAlbnaa = false;
     this.showJobApplicant = false;
+    this.showCourseApplicant = false;
+    this.showTrainingApplicant = false;
+    this.showCourseAskInfo = false;
+    this.showAddingResult = false;
+
+
+
+
 
 
   }
@@ -739,6 +805,14 @@ getAllContact(){
     this.showDeleteIntern = false;
     this.showEnrollAlbnaa = false;
     this.showJobApplicant = false;
+    this.showCourseApplicant = false;
+    this.showTrainingApplicant = false;
+    this.showCourseAskInfo = false;
+    this.showAddingResult = false;
+
+
+
+
 
 
   }
@@ -770,6 +844,14 @@ getAllContact(){
     this.showDeleteIntern = false;
     this.showEnrollAlbnaa = false;
     this.showJobApplicant = false;
+    this.showCourseApplicant = false;
+    this.showTrainingApplicant = false;
+    this.showCourseAskInfo = false;
+    this.showAddingResult = false;
+
+
+
+
 
 
   }
@@ -801,6 +883,14 @@ getAllContact(){
     this.showDeleteIntern = false;
     this.showEnrollAlbnaa = false;
     this.showJobApplicant = false;
+    this.showCourseApplicant = false;
+    this.showTrainingApplicant = false;
+    this.showCourseAskInfo = false;
+    this.showAddingResult = false;
+
+
+
+
 
 
   }
@@ -832,6 +922,14 @@ getAllContact(){
     this.showDeleteIntern = false;
     this.showEnrollAlbnaa = false;
     this.showJobApplicant = false;
+    this.showCourseApplicant = false;
+    this.showTrainingApplicant = false;
+    this.showCourseAskInfo = false;
+    this.showAddingResult = false;
+
+
+
+
 
 
   }
@@ -863,6 +961,14 @@ getAllContact(){
     this.showDeleteIntern = false;
     this.showEnrollAlbnaa = false;
     this.showJobApplicant = false;
+    this.showCourseApplicant = false;
+    this.showTrainingApplicant = false;
+    this.showCourseAskInfo = false;
+    this.showAddingResult = false;
+
+
+
+
 
 
   }
@@ -894,6 +1000,13 @@ getAllContact(){
     this.showDeleteIntern = false;
     this.showEnrollAlbnaa = false;
     this.showJobApplicant = false;
+    this.showCourseApplicant = false;
+    this.showTrainingApplicant = false;
+    this.showCourseAskInfo = false;
+    this.showAddingResult = false;
+
+
+
 
 
   }
@@ -925,6 +1038,14 @@ getAllContact(){
     this.showDeleteIntern = false;
     this.showEnrollAlbnaa = false;
     this.showJobApplicant = false;
+    this.showCourseApplicant = false;
+    this.showTrainingApplicant = false;
+    this.showCourseAskInfo = false;
+    this.showAddingResult = false;
+
+
+
+
 
 
   }
@@ -956,6 +1077,14 @@ getAllContact(){
     this.showDeleteIntern = false;
     this.showEnrollAlbnaa = false;
     this.showJobApplicant = false;
+    this.showCourseApplicant = false;
+    this.showTrainingApplicant = false;
+    this.showCourseAskInfo = false;
+    this.showAddingResult = false;
+
+
+
+
 
 
   }
@@ -987,6 +1116,14 @@ getAllContact(){
     this.showDeleteIntern = false;
     this.showEnrollAlbnaa = false;
     this.showJobApplicant = false;
+    this.showCourseApplicant = false;
+    this.showTrainingApplicant = false;
+    this.showCourseAskInfo = false;
+    this.showAddingResult = false;
+
+
+
+
 
 
   }
@@ -1018,6 +1155,14 @@ getAllContact(){
     this.showDeleteIntern = false;
     this.showEnrollAlbnaa = false;
     this.showJobApplicant = false;
+    this.showCourseApplicant = false;
+    this.showTrainingApplicant = false;
+    this.showCourseAskInfo = false;
+    this.showAddingResult = false;
+
+
+
+
 
 
   }
@@ -1049,6 +1194,14 @@ getAllContact(){
     this.showDeleteIntern = false;
     this.showEnrollAlbnaa = false;
     this.showJobApplicant = false;
+    this.showCourseApplicant = false;
+    this.showTrainingApplicant = false;
+    this.showCourseAskInfo = false;
+        this.showAddingResult = false;
+
+
+
+
 
 
   }
@@ -1080,6 +1233,14 @@ getAllContact(){
     this.showDeleteIntern = false;
     this.showEnrollAlbnaa = false;
     this.showJobApplicant = false;
+    this.showCourseApplicant = false;
+    this.showTrainingApplicant = false;
+    this.showCourseAskInfo = false;
+    this.showAddingResult = false;
+
+
+
+
 
 
   }
@@ -1111,6 +1272,14 @@ getAllContact(){
     this.showDeleteIntern = false;
     this.showEnrollAlbnaa = false;
     this.showJobApplicant = false;
+    this.showCourseApplicant = false;
+    this.showTrainingApplicant = false;
+    this.showCourseAskInfo = false;
+    this.showAddingResult = false;
+
+
+
+
 
 
   }
@@ -1142,6 +1311,14 @@ getAllContact(){
     this.showDeleteIntern = false;
     this.showEnrollAlbnaa = false;
     this.showJobApplicant = false;
+    this.showCourseApplicant = false;
+    this.showTrainingApplicant = false;
+    this.showCourseAskInfo = false;
+    this.showAddingResult = false;
+
+
+
+
 
 
   }
@@ -1173,6 +1350,14 @@ getAllContact(){
     this.showDeleteIntern = false;
     this.showEnrollAlbnaa = false;
     this.showJobApplicant = false;
+    this.showCourseApplicant = false;
+    this.showTrainingApplicant = false;
+    this.showCourseAskInfo = false;
+    this.showAddingResult = false;
+
+
+
+
 
 
   }
@@ -1204,6 +1389,14 @@ getAllContact(){
     this.showDeleteIntern = false;
     this.showEnrollAlbnaa = false;
     this.showJobApplicant = false;
+    this.showCourseApplicant = false;
+    this.showTrainingApplicant = false;
+    this.showCourseAskInfo = false;
+    this.showAddingResult = false;
+
+
+
+
 
 
   }
@@ -1235,6 +1428,14 @@ getAllContact(){
     this.showDeleteIntern = false;
     this.showEnrollAlbnaa = false;
     this.showJobApplicant = false;
+    this.showCourseApplicant = false;
+    this.showTrainingApplicant = false;
+    this.showCourseAskInfo = false;
+    this.showAddingResult = false;
+
+
+
+
 
 
   }
@@ -1266,6 +1467,14 @@ getAllContact(){
     this.showDeleteIntern = true;
     this.showEnrollAlbnaa = false;
     this.showJobApplicant = false;
+    this.showCourseApplicant = false;
+    this.showTrainingApplicant = false;
+    this.showCourseAskInfo = false;
+    this.showAddingResult = false;
+
+
+
+
 
 
   }
@@ -1297,6 +1506,14 @@ getAllContact(){
     this.showDeleteIntern = false;
     this.showEnrollAlbnaa = true;
     this.showJobApplicant = false;
+    this.showCourseApplicant = false;
+    this.showTrainingApplicant = false;
+    this.showCourseAskInfo = false;
+    this.showAddingResult = false;
+
+
+
+
   }
 
   showJobApplicantHandler(): void {
@@ -1326,5 +1543,158 @@ getAllContact(){
     this.showDeleteIntern = false;
     this.showEnrollAlbnaa = false;
     this.showJobApplicant = true;
+    this.showCourseApplicant = false;
+    this.showTrainingApplicant = false;
+    this.showCourseAskInfo = false;
+    this.showAddingResult = false;
+
+
+
+
   }
+
+
+  showCourseApplicantHandler(): void {
+    this.showNewsList = false;
+    this.showAddNews = false;
+    this.showEditNews = false;
+    this.showDeleteNews = false;
+    this.showMagazineList = false;
+    this.showAddMagazine = false;
+    this.showEditMagazine = false;
+    this.showDeleteMagazine = false;
+    this.showMembershipList = false;
+    this.showJobsList = false;
+    this.showAddJobsList = false;
+    this.showEditJobsList = false;
+    this.showDeleteJobsList = false;
+    this.showAllProblemsList = false;
+    this.showCoursesProblems = false;
+    this.showInternProblems = false;
+    this.showCoursesList = false;
+    this.showEditCourses = false;
+    this.showAddCourses = false;
+    this.showDeleteCourses = false;
+    this.showInternList = false;
+    this.showEditIntern = false;
+    this.showAddIntern = false;
+    this.showDeleteIntern = false;
+    this.showEnrollAlbnaa = false;
+    this.showJobApplicant = false;
+    this.showCourseApplicant = true;
+    this.showTrainingApplicant = false;
+    this.showCourseAskInfo = false;
+    this.showAddingResult = false;
+
+
+  }
+
+
+  showTrainingApplicantHandler(): void {
+    this.showNewsList = false;
+    this.showAddNews = false;
+    this.showEditNews = false;
+    this.showDeleteNews = false;
+    this.showMagazineList = false;
+    this.showAddMagazine = false;
+    this.showEditMagazine = false;
+    this.showDeleteMagazine = false;
+    this.showMembershipList = false;
+    this.showJobsList = false;
+    this.showAddJobsList = false;
+    this.showEditJobsList = false;
+    this.showDeleteJobsList = false;
+    this.showAllProblemsList = false;
+    this.showCoursesProblems = false;
+    this.showInternProblems = false;
+    this.showCoursesList = false;
+    this.showEditCourses = false;
+    this.showAddCourses = false;
+    this.showDeleteCourses = false;
+    this.showInternList = false;
+    this.showEditIntern = false;
+    this.showAddIntern = false;
+    this.showDeleteIntern = false;
+    this.showEnrollAlbnaa = false;
+    this.showJobApplicant = false;
+    this.showCourseApplicant = false;
+    this.showTrainingApplicant = true;
+    this.showCourseAskInfo = false;
+    this.showAddingResult = false;
+
+
+  }
+
+  showCourseAskInfoHandler(): void {
+    this.showNewsList = false;
+    this.showAddNews = false;
+    this.showEditNews = false;
+    this.showDeleteNews = false;
+    this.showMagazineList = false;
+    this.showAddMagazine = false;
+    this.showEditMagazine = false;
+    this.showDeleteMagazine = false;
+    this.showMembershipList = false;
+    this.showJobsList = false;
+    this.showAddJobsList = false;
+    this.showEditJobsList = false;
+    this.showDeleteJobsList = false;
+    this.showAllProblemsList = false;
+    this.showCoursesProblems = false;
+    this.showInternProblems = false;
+    this.showCoursesList = false;
+    this.showEditCourses = false;
+    this.showAddCourses = false;
+    this.showDeleteCourses = false;
+    this.showInternList = false;
+    this.showEditIntern = false;
+    this.showAddIntern = false;
+    this.showDeleteIntern = false;
+    this.showEnrollAlbnaa = false;
+    this.showJobApplicant = false;
+    this.showCourseApplicant = false;
+    this.showTrainingApplicant = false;
+    this.showCourseAskInfo = true;
+    this.showAddingResult = false;
+
+
+  }
+
+  showAddResultHandler(): void {
+    this.showNewsList = false;
+    this.showAddNews = false;
+    this.showEditNews = false;
+    this.showDeleteNews = false;
+    this.showMagazineList = false;
+    this.showAddMagazine = false;
+    this.showEditMagazine = false;
+    this.showDeleteMagazine = false;
+    this.showMembershipList = false;
+    this.showJobsList = false;
+    this.showAddJobsList = false;
+    this.showEditJobsList = false;
+    this.showDeleteJobsList = false;
+    this.showAllProblemsList = false;
+    this.showCoursesProblems = false;
+    this.showInternProblems = false;
+    this.showCoursesList = false;
+    this.showEditCourses = false;
+    this.showAddCourses = false;
+    this.showDeleteCourses = false;
+    this.showInternList = false;
+    this.showEditIntern = false;
+    this.showAddIntern = false;
+    this.showDeleteIntern = false;
+    this.showEnrollAlbnaa = false;
+    this.showJobApplicant = false;
+    this.showCourseApplicant = false;
+    this.showTrainingApplicant = false;
+    this.showCourseAskInfo = false;
+    this.showAddingResult = true;
+
+
+  }
+
+
+  
 }

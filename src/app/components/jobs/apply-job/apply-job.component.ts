@@ -1,9 +1,9 @@
 import { DatePipe } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
-import { Component, Directive, ElementRef, Pipe } from '@angular/core';
-import { NgControl } from '@angular/forms';
+import { Component, Directive, ElementRef, OnInit, Pipe } from '@angular/core';
+import { FormBuilder, FormGroup, NgControl, Validators } from '@angular/forms';
+import { JobApplicantService } from 'src/app/services/job-applicant.service';
 import { environment } from 'src/environments/environment.development';
-
 
 @Component({
   selector: 'app-apply-job',
@@ -11,32 +11,45 @@ import { environment } from 'src/environments/environment.development';
   styleUrls: ['./apply-job.component.css'],
 })
 
+export class ApplyJobComponent implements OnInit {
 
+  myJobApplicantForm!:FormGroup;
 
-export class ApplyJobComponent {
-private apiUrl:string = environment.apiUrl
-  formData: any = {}; // Object to hold form data
-
-
-
-  constructor(private http: HttpClient ) {}
-
-  submitForm(): void {
-    
-    // Send form data to API
-    this.http.post(`${this.apiUrl}JobApplicant/AddjobApplicant`, this.formData)
-      .subscribe(response => {
-        console.log('Form submitted successfully:', response);
-        alert("Send successfully")
-        // Optionally, reset the form after successful submission
-        this.resetForm();
-      }, error => {
-        console.error('Error submitting form:', error);
-      });
+  ngOnInit(): void {
+    this.myJobApplicantForm = this.fb.group({
+      name:['', Validators.required],
+      dateOfBirth:['', Validators.required],
+      address:['',Validators.required],
+      phoneNumber:['', Validators.required],
+      graduationYear:['', Validators.required],
+      gender:['',Validators.required],
+      university:['',Validators.required],
+      faculty:['',Validators.required],
+      applicantCv:['',Validators.required],
+      
+    });
   }
 
-  resetForm(): void {
-    // Clear form data
-    this.formData = {};
+  constructor( private fb: FormBuilder , private JobApplicantService :JobApplicantService){}
+
+  onSubmitJobApplicant() {
+    if (this.myJobApplicantForm.valid) {
+      const JobApplicantItem = this.myJobApplicantForm.value;
+      this.JobApplicantService.postJobApplicant(JobApplicantItem).subscribe(
+          () => {
+            alert('تم التسجيل')
+              console.log('Job Applicant item added successfully');
+              this.myJobApplicantForm.reset();
+              // Optionally, refresh the news list or navigate back to the list
+          },
+          error => {
+              console.error('Error adding new JobApplicant Item :', error);
+              console.log(this.myJobApplicantForm.value)
+          }
+      );
+  } else {
+      console.error('Form is invalid');
   }
+}
+
 }
