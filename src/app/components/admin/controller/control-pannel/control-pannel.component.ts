@@ -18,6 +18,8 @@ import { EnquiryCourseService } from 'src/app/services/enquiry-course.service';
 import { EnrollAlbnaaService } from 'src/app/services/enroll-albnaa.service';
 import { MembershipService } from 'src/app/services/membership.service';
 import { ResultService } from 'src/app/services/result.service';
+import { environment } from 'src/environments/environment.development';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-control-pannel',
@@ -25,6 +27,8 @@ import { ResultService } from 'src/app/services/result.service';
   styleUrls: ['./control-pannel.component.css'],
 })
 export class ControlPannelComponent implements OnInit {
+  private apiUrl:string = environment.apiUrl;
+
   courses: any[] = [];
   trainings: any[] = [];
   news: any[] = [];
@@ -38,7 +42,8 @@ export class ControlPannelComponent implements OnInit {
   trainingApplicant:any[] =[];
   courseAskInfo:any[] = [];
   applyAlbnaa:any[] = [];
-  myForm: FormGroup ;
+  myForm!: FormGroup ;
+  fileToUpload!: File | null;
   myMagazineForm:FormGroup;
   data: any[] = [];
   selectedId: number | null = null;
@@ -51,6 +56,7 @@ export class ControlPannelComponent implements OnInit {
 
 
   constructor(
+    private http:HttpClient,
     private courseService: CoursesService,
     private trainingsService: TrainingsService,
     private newsService: NewsService,
@@ -67,6 +73,7 @@ export class ControlPannelComponent implements OnInit {
     private enrollAlbnaaService :EnrollAlbnaaService,
     private membershipService :MembershipService,
     private resultService:ResultService
+    
 
   ) {
 
@@ -129,8 +136,10 @@ this.myResultForm = this.fb.group({
     this.getAllEnguiryCourse();
     this.getAllEnrollmentAlbnaa();
     this.getAllMembershipApplicant();
+    this. getAllProblems();
   }
 
+ 
 
   onSubmitResult() {
     if (this.myResultForm.valid) {
@@ -164,6 +173,14 @@ this.myResultForm = this.fb.group({
     })
   }
 
+  //tech support
+  getAllProblems(): void{
+    this.http.get<any>(this.apiUrl + 'TechSupport/getAllTechSupports')
+    .subscribe((response) => {
+      this.data = response;
+      console.log(this.data);
+    });
+  }
   getAllEnrollmentAlbnaa(){
     this.enrollAlbnaaService.getAllEnrollElbnaa().subscribe((res:any)=>{
       this.applyAlbnaa = res
@@ -216,25 +233,70 @@ this.myResultForm = this.fb.group({
   }
 
 
-  onSubmitNews() {
-    if (this.myForm.valid) {
-      const newNewsItem = this.myForm.value;
-      this.newsService.postNews(newNewsItem).subscribe(
-          () => {
-            alert('News item added successfully')
-              console.log('News item added successfully');
-              this.myForm.reset();
-              // Optionally, refresh the news list or navigate back to the list
-              this.getAllnews(); // Function to refresh the news list
-          },
-          error => {
-              console.error('Error adding news item:', error);
-          }
-      );
-  } else {
-      console.error('Form is invalid');
+  handleFileInput(event: Event) {
+    const inputElement = event.target as HTMLInputElement;
+    const files: FileList | null = inputElement.files;
+    if (files && files.length > 0) {
+      this.fileToUpload = files[0];
+      console.log(this.fileToUpload); // Log the selected file to verify
+      
+    } 
+    else {
+      console.error('No file selected');
+    }
   }
-}
+ 
+  
+  // onSubmit(form: any): void {
+  //   const formData: FormData = new FormData();
+  //   formData.append('Title', form.title);
+  //   formData.append('Description', form.description);
+  //   formData.append('Image', form.imageUrl);
+
+  //   this.http.post<any>(this.apiUrl + 'News/addNews', formData)
+  //     .subscribe((response) => {
+  //       console.log(response);
+  //       // Handle response as needed
+  //     });
+  // }
+
+
+  onSubmitNews() {
+
+    if (!this.fileToUpload) {
+      console.error('No file selected');
+      return;
+    }
+    const formData = new FormData();
+    const title = this.myForm.get('title')!.value;
+    const description = this.myForm.get('description')!.value;
+    const imageUrl = this.myForm.get('imageUrl')!.value;
+    if (title && description) {
+      formData.append('title', title);
+      formData.append('description', description);
+      formData.append('imageUrl', imageUrl)
+    } else {
+      console.error('One or more form fields are null');
+      return;
+    }
+  
+    formData.append('imageUrl', this.fileToUpload!); // Assert non-null with !
+    this.http.post<any>( this.apiUrl + 'News/addNews', formData)
+      .subscribe(
+        (response) => {
+          console.log(response)
+          console.log('News created successfully:', response);
+          // Reset form after successful submission
+          this.myForm.reset();
+        },
+        (error: HttpErrorResponse) => {
+          console.error('Error creating News:', error.error);
+          // Handle error
+        }
+      );
+    }
+
+
 
 
 
@@ -323,24 +385,57 @@ getAllMagazines(){
 
 
 onSubmitMagazine() {
-  if (this.myMagazineForm.valid) {
-    const newMAgazineItem = this.myMagazineForm.value;
-    this.magazinesService.postMagazine(newMAgazineItem).subscribe(
-        () => {
-          alert('Magazine item added successfully')
-            console.log('Magazine item added successfully');
-            this.myMagazineForm.reset();
-            // Optionally, refresh the news list or navigate back to the list
-            this.getAllMagazines();
-             // Function to refresh the news list
-        },
-        error => {
-            console.error('Error adding MAgazine item:', error);
-        }
+
+  if (!this.fileToUpload) {
+    console.error('No file selected');
+    return;
+  }
+  const formData = new FormData();
+  const title = this.myMagazineForm.get('title')!.value;
+  const description = this.myMagazineForm.get('description')!.value;
+  const imageUrl = this.myMagazineForm.get('imageUrl')!.value;
+  if (title && description) {
+    formData.append('title', title);
+    formData.append('description', description);
+    formData.append('imageUrl', imageUrl)
+  } else {
+    console.error('One or more form fields are null');
+    return;
+  }
+
+  formData.append('imageUrl', this.fileToUpload!); // Assert non-null with !
+  this.http.post<any>( this.apiUrl + 'Magazine/addMagazine', formData)
+    .subscribe(
+      (response) => {
+        console.log(response)
+        console.log('Magazines created successfully:', response);
+        // Reset form after successful submission
+        this.myMagazineForm.reset();
+      },
+      (error: HttpErrorResponse) => {
+        console.error('Error creating Magazine:', error.error);
+        // Handle error
+      }
     );
-} else {
-    console.error('Form is invalid');
-}
+
+//   if (this.myMagazineForm.valid) {
+//     const newMAgazineItem = this.myMagazineForm.value;
+//     this.magazinesService.postMagazine(newMAgazineItem).subscribe(
+//         () => {
+//           alert('Magazine item added successfully')
+//             console.log('Magazine item added successfully');
+//             this.myMagazineForm.reset();
+//             // Optionally, refresh the news list or navigate back to the list
+//             this.getAllMagazines();
+//              // Function to refresh the news list
+//         },
+//         error => {
+//             console.error('Error adding MAgazine item:', error);
+//         }
+//     );
+// } else {
+//     console.error('Form is invalid');
+// }
 }
 
 

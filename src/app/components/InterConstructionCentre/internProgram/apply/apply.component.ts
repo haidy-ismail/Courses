@@ -28,13 +28,14 @@ export class ApplyTrainingComponent implements OnInit {
       const newCourseApplicantItem = this.myCourseApplicantForm.value;
       this.trainingApplicantService.postTrainingApplicant(newCourseApplicantItem).subscribe(
           () => {
-            alert('TainingApplicant item added successfully')
+            alert('تم التسجيل ')
               console.log('TainingApplicant item added successfully');
               this.myCourseApplicantForm.reset();
               // Optionally, refresh the news list or navigate back to the list
           },
           error => {
-              console.error('Error adding new TainingApplicant Item :', error);
+            alert('خطا في التسجيل')
+
           }
       );
   } else {

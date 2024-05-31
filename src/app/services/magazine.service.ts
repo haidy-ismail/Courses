@@ -1,21 +1,23 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment.development';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MagazineService {
 
-  private apiURL ='https://localhost:7125/api/Magazine/addMagazine'
-  private basicURL = 'https://localhost:7125/api/Magazine'
+  private temp = environment.apiUrl;
+  private apiURL = this.temp + 'Magazine/addMagazine'
+  private basicURL = this.temp + 'Magazine'
 
 
   constructor(private http:HttpClient) { }
 
 
   getAllMagazines(){
-    return this.http.get('https://localhost:7125/api/Magazine/getAllMagazines')
+    return this.http.get(this.temp + 'Magazine/getAllMagazines')
 
   }
 

@@ -7,7 +7,8 @@ import { environment } from 'src/environments/environment.development';
   providedIn: 'root'
 })
 export class ApiServiceService {
-  private baseUrl : string = 'https://localhost:7125/api/User/';
+  private temp = environment.apiUrl;
+  private baseUrl : string = this.temp + 'User/';
 
   // private apiUrl : string = 'https://localhost:7125/api';
   private apiUrl : string = environment.apiUrl;

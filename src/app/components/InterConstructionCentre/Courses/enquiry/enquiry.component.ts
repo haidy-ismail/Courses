@@ -29,13 +29,13 @@ export class EnquiryComponent implements OnInit{
       const newCourseApplicantItem = this.myCourseApplicantForm.value;
       this.cousreAskInfoService.postCourseAskInfo(newCourseApplicantItem).subscribe(
           () => {
-            alert('CourseApplicant item added successfully')
-              console.log('CourseApplicant item added successfully');
+            alert('تم التسجيل')
               this.myCourseApplicantForm.reset();
               // Optionally, refresh the news list or navigate back to the list
           },
           error => {
-              console.error('Error adding new CourseApplicant Item :', error);
+            alert('خطا في التسجيل')
+
           }
       );
   } else {

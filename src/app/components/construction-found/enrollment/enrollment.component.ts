@@ -147,13 +147,13 @@ export class EnrollmentComponent implements OnInit {
               // Optionally, refresh the news list or navigate back to the list
           },
           error => {
-              console.error('Error adding new TainingApplicant Item :', error);
-              console.log(this.myEnrollForm.value)
+            alert(' خطا في التسجيل')
+
           }
       );
   } else {
-      console.error('Form is invalid');
-  }
+    alert(' خطا في التسجيل') 
+   }
 }
 
 

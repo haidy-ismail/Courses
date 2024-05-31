@@ -5,7 +5,7 @@
       <h1 class="logo"><a routerLink="home">البناء الدولية</a></h1>
   
       <!-- [ngClass]="{ 'navbar-mobile': isMobileNavOpen }" -->
-        <nav id="navbar" class="navbar" >
+        <nav id="navbar" class="navbar" [ngClass]="{ 'navbar-mobile': isMobileNavOpen }">
         <ul>
           <!-- <li><a class="nav-link scrollto active" routerLink="home">الرئيسية</a></li> -->
           <!-- <li><a class="nav-link scrollto" routerLink="applicant">طلب التحاق</a></li> -->
@@ -61,7 +61,6 @@
           <li><a routerLink="jobs">وظائف</a></li>
           
           <li><a class="nav-link scrollto" routerLink="contact">أتصل بنا</a></li>
-          <li><a class="nav-link scrollto" routerLink="controll"> لوحة التحكم</a></li>
 
           <div *ngIf="isLoggedIn(); then loggedInTemplate else loggedOutTemplate"></div>
           <ng-template #loggedInTemplate >

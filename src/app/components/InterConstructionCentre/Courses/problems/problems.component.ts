@@ -15,13 +15,12 @@ export class ProblemsComponent {
     // Send form data to API
     this.http.post('https://localhost:7125/api/CourseProblems/CreateCourseProblem', this.formData)
       .subscribe(response => {
-        console.log('Form submitted successfully:', response);
-        alert("Send successfully");
+        alert('تم الارسال')
 
         // Optionally, reset the form after successful submission
         this.resetForm();
       }, error => {
-        console.error('Error submitting form:', error);
+        alert('خطا في الارسال')
       });
   }
 

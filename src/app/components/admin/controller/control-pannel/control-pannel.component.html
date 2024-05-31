@@ -1100,8 +1100,9 @@
                   name="imageUrl"
                   formControlName="imageUrl"
                   type="file"
-                  ngModel
-                  id="formFile"
+                  
+                  id="imageUrl"
+                  (change)="handleFileInput($event)"
                 />
               </div>
 
@@ -1222,7 +1223,7 @@
               <div class="col-md-12">
                 <input
                   type="text"
-                  name="Magazine_title"
+                  name="title"
                   class="form-control"
                   placeholder="عنوان المجله"
                   formControlName="title"
@@ -1246,8 +1247,11 @@
                 <input
                   class="form-control"
                   type="file"
+                  name="imageUrl"
                   formControlName="imageUrl"
-                  id="formFile"
+                  id="imageUrl"
+                  (change)="handleFileInput($event)"
+
                 />
               </div>
 

@@ -1,36 +1,41 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment.development';
 
 @Injectable({
   providedIn: 'root'
 })
 export class NewsService {
 
+  private temp = environment.apiUrl;
   constructor(private http:HttpClient) { }
 
   // private apiURL = 'https://localhost:7125/api/News/addNews'
   // private basicURL = 'https://localhost:7125/api/News'
 
-  private apiURL = 'https://localhost:7125/api/Newsss/addNews';
-  private basicURL = 'https://localhost:7125/api/Newsss';
+  private apiURL = this.temp + 'News/addNews';
+  private basicURL = this.temp + 'News';
 
-  // getAllNews(){
-  //   // return this.http.get('https://localhost:7125/api/News/getAllNews')
-  //   return this.http.get('https://localhost:7125/api/Newsss');
-  // // private apiURL = 'https://localhost:7125/api/Newsss/addNews'
-  // // // private basicURL = 'https://localhost:7125/api/News'
-  // // private basicURL = 'https://localhost:7125/api/Newsss'
-
-  // }
+ 
   getAllNews(){
-    return this.http.get('https://localhost:7125/api/Newsss')
+    return this.http.get(this.temp + 'News/getAllNews')
 
   }
 
   postNews(data: any): Observable<any> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this.http.post(this.apiURL, data, { headers });
+}
+
+
+postData(title: string, description: string, image: File): Observable<any> {
+  const formData: FormData = new FormData();
+  formData.append('Title', title);
+  formData.append('Description', description);
+  formData.append('Image', image, image.name);
+  
+  return this.http.post<any>(this.temp + 'News/addNews', formData);
 }
 
 

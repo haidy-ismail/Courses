@@ -1,20 +1,22 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment.development';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CoursesService {
 
-  private apiURL ='https://localhost:7125/api/Courses/addCourse'
-  private basicURL = 'https://localhost:7125/api/Courses'
+  private temp = environment.apiUrl;
+  private apiURL = this.temp + 'Courses/addCourse'
+  private basicURL = this.temp + 'Courses'
 
 
   constructor(private http:HttpClient) { }
 
   getAllCourses(){
-    return this.http.get('https://localhost:7125/api/Courses/getAllCourses')
+    return this.http.get(this.temp + 'Courses/getAllCourses')
   }
 
   postCourse(data: any): Observable<any> {
